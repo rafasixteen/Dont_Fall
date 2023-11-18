@@ -8,6 +8,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dont_Fall", "_build\Dont_Fa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "raylib", "_build\raylib.vcxproj", "{8898EA18-743A-15EF-5DF5-284349369C3F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rlImGui", "_build\rlImGui.vcxproj", "{DECE814C-4AAE-00E8-53C6-8BBEBF246749}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -44,6 +46,18 @@ Global
 		{8898EA18-743A-15EF-5DF5-284349369C3F}.Release|Win32.Build.0 = Release|Win32
 		{8898EA18-743A-15EF-5DF5-284349369C3F}.Release|x64.ActiveCfg = Release|x64
 		{8898EA18-743A-15EF-5DF5-284349369C3F}.Release|x64.Build.0 = Release|x64
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Debug|ARM64.Build.0 = Debug|ARM64
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Debug|Win32.Build.0 = Debug|Win32
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Debug|x64.ActiveCfg = Debug|x64
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Debug|x64.Build.0 = Debug|x64
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Release|ARM64.ActiveCfg = Release|ARM64
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Release|ARM64.Build.0 = Release|ARM64
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Release|Win32.ActiveCfg = Release|Win32
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Release|Win32.Build.0 = Release|Win32
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Release|x64.ActiveCfg = Release|x64
+		{DECE814C-4AAE-00E8-53C6-8BBEBF246749}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

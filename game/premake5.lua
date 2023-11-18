@@ -31,4 +31,5 @@ project (workspaceName)
 	
 	link_raylib()
 	
+	link_to("rlImGui")
 	-- To link to a lib use link_to("LIB_FOLDER_NAME")
