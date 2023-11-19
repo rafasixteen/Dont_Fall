@@ -45,12 +45,12 @@ namespace Dont_Fall
 
 		Window window{ WIDTH,HEIGHT };
 		RGUI::GUI gui{ screenCenter };
-		Test::GuiTest guiTest{};
+		Test::GuiTest guiTest{ {screenCenter.x,screenCenter.y} };
 
 		GameObjectMap& gameObjects = GameObjectMap::GetInstance();
 		std::unordered_map<std::string, Texture2D> textures;
 
 		float deltaTime = 0.0f;
-		int fps = 0;
+		int fps = 0;;
 	};
 }

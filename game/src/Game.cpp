@@ -37,7 +37,7 @@ namespace Dont_Fall
 			deltaTime = GetFrameTime();
 			fps = GetFPS();
 
-			FrameInfo frameInfo{deltaTime, gameObjects};
+			FrameInfo frameInfo{ deltaTime, gameObjects };
 
 			Update(frameInfo);
 			Draw();
@@ -55,7 +55,8 @@ namespace Dont_Fall
 		switch (currentGameState)
 		{
 		case GameState::Start:
-			gui.RenderStart();
+			//gui.RenderStart();
+			guiTest.RenderStart();
 			break;
 		case GameState::Gameplay:
 			gui.RenderGameplay();
@@ -71,7 +72,6 @@ namespace Dont_Fall
 		default:
 			ERROR("Invalid GameState");
 		}
-		guiTest.Render();
 		EndDrawing();
 	}
 
@@ -80,7 +80,7 @@ namespace Dont_Fall
 		switch (currentGameState)
 		{
 		case GameState::Start:
-			gui.UpdateStart();
+			//gui.UpdateStart();
 			break;
 		case GameState::Gameplay:
 			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Paused); }
