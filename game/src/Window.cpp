@@ -1,5 +1,8 @@
 #include "Window.hpp"
 #include "raylib.h"
+#include <rlImGui.h>
+
+#include "gui/GUI.hpp"
 
 namespace Dont_Fall
 {
@@ -10,8 +13,10 @@ namespace Dont_Fall
 		//SetWindowIcon();
 		SetWindowMinSize(WIDTH / 1.5f, HEIGHT / 1.5f);
 
-		SetWindowState(FLAG_WINDOW_RESIZABLE);
-		SetWindowState(FLAG_MSAA_4X_HINT);
+		//SetWindowState(FLAG_WINDOW_RESIZABLE);
+
+		rlImGuiSetup(true);
+		Dont_Fall::RGUI::GUI::SetCustomStyle();
 	}
 
 	Window::~Window()

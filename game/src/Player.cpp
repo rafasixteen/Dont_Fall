@@ -7,6 +7,7 @@
 #include "Gun.hpp"
 #include "Obstacle.hpp"
 #include "Game.hpp"
+#include "Stats.hpp"
 
 namespace Dont_Fall
 {
@@ -57,6 +58,14 @@ namespace Dont_Fall
 		DrawCircle(static_cast<int>(rightEyePosition.x + offset.x), static_cast<int>(rightEyePosition.y + offset.y), 5, BLACK);
 	}
 
+	void Player::Die()
+	{
+		rigidbodyComponent->velocity = { 0,0 };
+		transform.position = { WIDTH / 2,HEIGHT / 2 };
+		// TODO: Play Died Sound
+
+	}
+
 	void Player::OnCollision(ColliderComponent& otherCollider)
 	{
 		auto& otherColliderOwner = *otherCollider.owner;
@@ -73,11 +82,7 @@ namespace Dont_Fall
 
 		if (otherColliderOwner.GetTag() == "Obstacle")
 		{
-			// TODO : Player Dies
-			Game::SetGameState(GameState::GameOver);
-
-			transform.position = { WIDTH / 2,HEIGHT / 2 };
-			rigidbodyComponent->velocity = { 0,0 };
+			Die();
 			GetChild("Gun").As<Gun>()->ammoCount = 5;
 
 			auto& map = GameObjectMap::GetInstance();
@@ -85,6 +90,9 @@ namespace Dont_Fall
 			{
 				if (obstacleObject->GetTag() == "Obstacle") obstacleObject->As<Obstacle>()->GenerateRandomPosition();
 			}
+
+			Stats::GetInstance().StopTimer();
+			Game::SetGameState(GameState::GameOver);
 		}
 	}
 }

@@ -20,6 +20,8 @@ namespace Dont_Fall
 		RigidbodyComponent* rigidbodyComponent = nullptr;
 		void OnCollision(ColliderComponent& otherCollider);
 
+		void Die();
+
 	private:
 		void DrawEyes();
 

@@ -17,7 +17,7 @@ namespace Dont_Fall
 	Game::Game()
 	{
 		SetExitKey(KEY_NULL);
-		//SetTargetFPS(60);
+		SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));
 
 		LoadAssets();
 		LoadGameObjects();
@@ -55,8 +55,7 @@ namespace Dont_Fall
 		switch (currentGameState)
 		{
 		case GameState::Start:
-			//gui.RenderStart();
-			guiTest.RenderStart();
+			gui.RenderStart();
 			break;
 		case GameState::Gameplay:
 			gui.RenderGameplay();
@@ -69,6 +68,12 @@ namespace Dont_Fall
 			gameObjects.Draw();
 			gui.RenderPaused();
 			break;
+		case GameState::Settings:
+			gui.RenderSettings();
+			break;
+		case GameState::Statistics:
+			gui.RenderStatistics();
+			break;
 		default:
 			ERROR("Invalid GameState");
 		}
@@ -80,10 +85,10 @@ namespace Dont_Fall
 		switch (currentGameState)
 		{
 		case GameState::Start:
-			//gui.UpdateStart();
+			gui.UpdateStart();
 			break;
 		case GameState::Gameplay:
-			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Paused); }
+			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Paused); stats.PauseTimer(); }
 			gameObjects.Update(frameInfo);
 			gui.UpdateGameplay();
 			break;
@@ -91,8 +96,14 @@ namespace Dont_Fall
 			gui.UpdateGameOver();
 			break;
 		case GameState::Paused:
-			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Gameplay); }
+			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Gameplay); stats.ResumeTimer(); }
 			gui.UpdatePaused();
+			break;
+		case GameState::Settings:
+			gui.UpdateSettings();
+			break;
+		case GameState::Statistics:
+			gui.UpdateStatistics();
 			break;
 		default:
 			ERROR("Invalid GameState");
@@ -166,5 +177,25 @@ namespace Dont_Fall
 
 		textures.clear();
 		gameObjects.Clear();
+	}
+
+	void Game::Restart()
+	{
+		auto& map = GameObjectMap::GetInstance();
+		map.FindByName("Player").As<Player>()->Die();
+
+		Stats::GetInstance().StartTimer();
+		
+		map.FindByName("Gun").As<Gun>()->ammoCount = 5;
+
+		for (auto& [name, ammoObject] : map.GetMap())
+		{
+			if (ammoObject->GetTag() == "Ammo") ammoObject->As<Ammo>()->GenerateRandomPosition();
+		}
+
+		for (auto& [name, obstacleObject] : map.GetMap())
+		{
+			if (obstacleObject->GetTag() == "Obstacle") obstacleObject->As<Obstacle>()->GenerateRandomPosition();
+		}
 	}
 }

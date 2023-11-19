@@ -5,7 +5,7 @@
 #include "core/Defines.hpp"
 #include "core/FrameInfo.hpp"
 #include "gui/GUI.hpp"
-#include "tests/guiTest/guiTest.hpp"
+#include <Stats.hpp>
 
 namespace Dont_Fall
 {
@@ -14,7 +14,9 @@ namespace Dont_Fall
 		Start,
 		Gameplay,
 		GameOver,
-		Paused
+		Paused,
+		Settings,
+		Statistics
 	};
 
 	class Game
@@ -27,6 +29,8 @@ namespace Dont_Fall
 
 		static void SetGameState(GameState newState) { currentGameState = newState; }
 		static GameState GetGameState() { return currentGameState; }
+		Vector2 GetScreenCenter() const { return screenCenter; }
+		static void Restart();
 
 	private:
 		void Start();
@@ -44,10 +48,11 @@ namespace Dont_Fall
 		const int OBSTACLES_COUNT = 3;
 
 		Window window{ WIDTH,HEIGHT };
-		RGUI::GUI gui{ screenCenter };
-		Test::GuiTest guiTest{ {screenCenter.x,screenCenter.y} };
+		RGUI::GUI gui{ {screenCenter.x,screenCenter.y} };
 
 		GameObjectMap& gameObjects = GameObjectMap::GetInstance();
+		Stats& stats = Stats::GetInstance();
+
 		std::unordered_map<std::string, Texture2D> textures;
 
 		float deltaTime = 0.0f;

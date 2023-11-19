@@ -5,7 +5,7 @@
 
 #define BENCHMARK(code) Utils::Benchmark([&]() { code; })
 
-constexpr int DEFAULT_FONT_SIZE = 16;
+constexpr int DEFAULT_FONT_SIZE = 32;
 
 namespace Dont_Fall::Utils
 {

@@ -1,13 +1,9 @@
 #include "Button.hpp"
 
-#define RAYGUI_IMPLEMENTATION
-#include <raygui.h>
-
 namespace Dont_Fall::RGUI
 {
-	Button::Button(Rectangle bounds, std::string name, Utils::Origin originAnchor) : bounds{ bounds }, name{ name }
+	Button::Button(std::string name, ImVec2 size) : size{ size }, name{ name }
 	{
-		origin = Utils::GetOrigin(bounds.width, bounds.height, originAnchor);
 	}
 
 	Button::~Button()
@@ -16,7 +12,7 @@ namespace Dont_Fall::RGUI
 
 	void Button::Render()
 	{
-		if (GuiButton({ bounds.x - origin.x,bounds.y - origin.y,bounds.width,bounds.height }, name.c_str()))
+		if (ImGui::Button(name.c_str(), size))
 		{
 			isClicked = true;
 		}
