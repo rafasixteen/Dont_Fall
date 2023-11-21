@@ -16,6 +16,9 @@ constexpr int HEIGHT = 720;
 #include <typeindex>
 #include <chrono>
 #include <functional>
+#include <iomanip>
+#include <sstream>
+#include <fstream>
 
 #include "Asserts.hpp"
 

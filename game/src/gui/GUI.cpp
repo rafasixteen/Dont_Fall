@@ -3,6 +3,7 @@
 #include "../Gun.hpp"
 #include <rlImGui.h>
 #include "Stats.hpp"
+#include <Player.hpp>
 
 namespace Dont_Fall::RGUI
 {
@@ -23,7 +24,6 @@ namespace Dont_Fall::RGUI
 		if (playButton.IsClicked())
 		{
 			Game::Restart();
-			Game::SetGameState(GameState::Gameplay);
 		}
 
 		if (statisticsButton.IsClicked())
@@ -65,7 +65,6 @@ namespace Dont_Fall::RGUI
 		if (restartButton.IsClicked())
 		{
 			Game::Restart();
-			Game::SetGameState(GameState::Gameplay);
 		}
 	}
 
@@ -80,8 +79,7 @@ namespace Dont_Fall::RGUI
 		rlImGuiEnd();
 
 		auto time = Stats::GetInstance().GetTime();
-		std::string timeText = std::to_string(time);
-		DrawText(timeText.c_str(), 100, 100, 40, BLACK);
+		DrawCurrentTimer(time);
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -90,15 +88,19 @@ namespace Dont_Fall::RGUI
 	{
 		if (homeButton.IsClicked())
 		{
+			//Stats::GetInstance().ResumeTimer();
+			GameObjectMap::GetInstance().FindByName("Player").As<Player>()->Reset(); // TODO: Figure This Out??
+			// Bug: When The Game Is Paused The Timer Won't Stop (internally) And When This Button Is Clicked
+			// The Timer Saved To The File Will Not Account For The Time Paused 
 			Game::SetGameState(GameState::Start);
 		}
 
 		if (resumeButton.IsClicked())
 		{
-			Stats::GetInstance().ResumeTimer();
+			//Stats::GetInstance().ResumeTimer();
 			Game::SetGameState(GameState::Gameplay);
 		}
-		
+
 		if (settingsButton.IsClicked())
 		{
 			Game::SetGameState(GameState::Settings);
@@ -120,7 +122,8 @@ namespace Dont_Fall::RGUI
 
 		rlImGuiEnd();
 
-		DrawCurrentTime();
+		auto time = stats.GetElapsedTime();
+		DrawCurrentTimer(0);
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -134,7 +137,8 @@ namespace Dont_Fall::RGUI
 	{
 		DrawAmmoCount();
 
-		DrawCurrentTime();
+		auto time = stats.GetElapsedTime();
+		DrawCurrentTimer(0);
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -158,7 +162,10 @@ namespace Dont_Fall::RGUI
 
 	void GUI::RenderStatistics()
 	{
-		DrawText("Statistics", screenCenter.x, screenCenter.y, 100, BLACK);
+		DrawText("Statistics", screenCenter.x, screenCenter.y - 200, 100, BLACK);
+
+		auto playerStats = Stats::GetInstance().LoadStatsFromFile("test.txt");
+		DrawText(Stats::FormatTime(playerStats.time).c_str(), screenCenter.x, screenCenter.y, 30, BLACK);
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -170,10 +177,9 @@ namespace Dont_Fall::RGUI
 		ammoLabel.Render(std::to_string(ammoCount).c_str());
 	}
 
-	void GUI::DrawCurrentTime()
+	void GUI::DrawCurrentTimer(int milliseconds)
 	{
-		auto time = Stats::GetInstance().GetElapsedTime();
-		std::string timeText = std::to_string(time);
+		std::string timeText = Stats::FormatTime(milliseconds);
 		DrawText(timeText.c_str(), 100, 100, 40, BLACK);
 	}
 

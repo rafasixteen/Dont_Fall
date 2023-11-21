@@ -60,10 +60,26 @@ namespace Dont_Fall
 
 	void Player::Die()
 	{
+		//auto& playerStats = Stats::GetInstance().GetPlayerStats();
+		//playerStats.died++;
+		//INFO("Player Died");
+		Reset();
+		// TODO: Play Died Sound
+		Game::SetGameState(GameState::GameOver);
+	}
+
+	void Player::Reset()
+	{
+		//Stats::GetInstance().StopTimer();
+		//auto& playerStats = Stats::GetInstance().GetPlayerStats();
+		//playerStats.time = Stats::GetInstance().GetTime();
+		//playerStats.gamesPlayed++;
+
 		rigidbodyComponent->velocity = { 0,0 };
 		transform.position = { WIDTH / 2,HEIGHT / 2 };
-		// TODO: Play Died Sound
+		//INFO("Player Reseted");
 
+		//Stats::GetInstance().SaveStatsToFile("test.txt");
 	}
 
 	void Player::OnCollision(ColliderComponent& otherCollider)
@@ -83,16 +99,6 @@ namespace Dont_Fall
 		if (otherColliderOwner.GetTag() == "Obstacle")
 		{
 			Die();
-			GetChild("Gun").As<Gun>()->ammoCount = 5;
-
-			auto& map = GameObjectMap::GetInstance();
-			for (auto& [name, obstacleObject] : map.GetMap())
-			{
-				if (obstacleObject->GetTag() == "Obstacle") obstacleObject->As<Obstacle>()->GenerateRandomPosition();
-			}
-
-			Stats::GetInstance().StopTimer();
-			Game::SetGameState(GameState::GameOver);
 		}
 	}
 }

@@ -2,6 +2,7 @@
 #include "core/Defines.hpp"
 #include "GameObjectMap.hpp"
 #include "Gun.hpp"
+#include "Stats.hpp"
 
 namespace Dont_Fall
 {
@@ -27,6 +28,7 @@ namespace Dont_Fall
 	{
 		auto& map = GameObjectMap::GetInstance().GetMap();
 		map["Gun"]->As<Gun>()->ammoCount++;
+		Stats::GetInstance().GetPlayerStats().ammoCollected++;
 	}
 
 	void Ammo::GenerateRandomPosition()

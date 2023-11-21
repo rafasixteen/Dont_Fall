@@ -21,6 +21,7 @@ namespace Dont_Fall
 		void OnCollision(ColliderComponent& otherCollider);
 
 		void Die();
+		void Reset();
 
 	private:
 		void DrawEyes();

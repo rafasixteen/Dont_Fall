@@ -2,14 +2,6 @@
 
 namespace Dont_Fall
 {
-	GameObjectMap GameObjectMap::instance;
-	GameObjectMap::GameObjectMap() {}
-
-	GameObjectMap& GameObjectMap::GetInstance()
-	{
-		return instance;
-	}
-
 	// Linear Search O(N)
 	GameObject& GameObjectMap::FindByTag(const std::string& tag)
 	{

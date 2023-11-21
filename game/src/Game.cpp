@@ -88,7 +88,7 @@ namespace Dont_Fall
 			gui.UpdateStart();
 			break;
 		case GameState::Gameplay:
-			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Paused); stats.PauseTimer(); }
+			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Paused); /*stats.PauseTimer();*/ }
 			gameObjects.Update(frameInfo);
 			gui.UpdateGameplay();
 			break;
@@ -96,7 +96,7 @@ namespace Dont_Fall
 			gui.UpdateGameOver();
 			break;
 		case GameState::Paused:
-			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Gameplay); stats.ResumeTimer(); }
+			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Gameplay); /*stats.ResumeTimer();*/ }
 			gui.UpdatePaused();
 			break;
 		case GameState::Settings:
@@ -181,11 +181,9 @@ namespace Dont_Fall
 
 	void Game::Restart()
 	{
-		auto& map = GameObjectMap::GetInstance();
-		map.FindByName("Player").As<Player>()->Die();
+		//INFO("Game Restarted");
 
-		Stats::GetInstance().StartTimer();
-		
+		auto& map = GameObjectMap::GetInstance();
 		map.FindByName("Gun").As<Gun>()->ammoCount = 5;
 
 		for (auto& [name, ammoObject] : map.GetMap())
@@ -197,5 +195,9 @@ namespace Dont_Fall
 		{
 			if (obstacleObject->GetTag() == "Obstacle") obstacleObject->As<Obstacle>()->GenerateRandomPosition();
 		}
+
+		//Stats::GetInstance().RestartTimer();
+		//Stats::GetInstance().StartTimer();
+		SetGameState(GameState::Gameplay);
 	}
 }

@@ -9,7 +9,11 @@ namespace Dont_Fall
 	class GameObjectMap
 	{
 	public:
-		static GameObjectMap& GetInstance();
+		static GameObjectMap& GetInstance()
+		{
+			static GameObjectMap instance;
+			return instance;
+		}
 
 		GameObject& FindByTag(const std::string& tag);
 		GameObject& FindByName(const std::string& name);
@@ -24,9 +28,8 @@ namespace Dont_Fall
 		void Update(FrameInfo& frameInfo);
 
 	private:
-		GameObjectMap();
+		GameObjectMap() {}
 
-		static GameObjectMap instance;
 		std::unordered_map<std::string, std::unique_ptr<GameObject>> gameObjects;
 	};
 }

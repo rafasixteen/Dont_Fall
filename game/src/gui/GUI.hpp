@@ -3,6 +3,7 @@
 #include "Button.hpp"
 #include "Menu.hpp"
 #include "Label.hpp"
+#include "../Stats.hpp"
 
 namespace Dont_Fall::RGUI
 {
@@ -33,8 +34,9 @@ namespace Dont_Fall::RGUI
 		static void SetCustomStyle();
 	private:
 		void DrawAmmoCount();
-		void DrawCurrentTime();
+		void DrawCurrentTimer(int milliseconds);
 
+		Stats& stats = Stats::GetInstance();
 		ImVec2 screenCenter{};
 
 		ImVec2 buttonSize{ 200,50 };
