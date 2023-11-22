@@ -41,6 +41,14 @@ namespace Dont_Fall
 
 			Update(frameInfo);
 			Draw();
+
+			//int time = stats.GetTime();
+			//std::string timeText = stats.FormatTime(time);
+			//DrawText(timeText.c_str(), 40, 40, 30, GREEN);
+
+			//int elapsed = stats.GetElapsedTime();
+			//std::string elapsedText = stats.FormatTime(elapsed);
+			//DrawText(elapsedText.c_str(), 40, 80, 30, GREEN);
 		}
 	}
 
@@ -88,7 +96,7 @@ namespace Dont_Fall
 			gui.UpdateStart();
 			break;
 		case GameState::Gameplay:
-			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Paused); /*stats.PauseTimer();*/ }
+			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Paused); stats.PauseTimer(); }
 			gameObjects.Update(frameInfo);
 			gui.UpdateGameplay();
 			break;
@@ -96,7 +104,7 @@ namespace Dont_Fall
 			gui.UpdateGameOver();
 			break;
 		case GameState::Paused:
-			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Gameplay); /*stats.ResumeTimer();*/ }
+			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Gameplay); stats.ResumeTimer(); }
 			gui.UpdatePaused();
 			break;
 		case GameState::Settings:
@@ -179,12 +187,14 @@ namespace Dont_Fall
 		gameObjects.Clear();
 	}
 
-	void Game::Restart()
+	void Game::ResetGame()
 	{
-		//INFO("Game Restarted");
+		Stats::GetInstance().ResumeTimer();
+		Stats::GetInstance().StopTimer();
 
 		auto& map = GameObjectMap::GetInstance();
 		map.FindByName("Gun").As<Gun>()->ammoCount = 5;
+		map.FindByName("Player").As<Player>()->Reset();
 
 		for (auto& [name, ammoObject] : map.GetMap())
 		{
@@ -196,8 +206,17 @@ namespace Dont_Fall
 			if (obstacleObject->GetTag() == "Obstacle") obstacleObject->As<Obstacle>()->GenerateRandomPosition();
 		}
 
-		//Stats::GetInstance().RestartTimer();
-		//Stats::GetInstance().StartTimer();
+		auto& playerStats = Stats::GetInstance().GetPlayerStats();
+		playerStats.time = Stats::GetInstance().GetTime();
+		Stats::GetInstance().SaveStatsToFile("test.txt");
+	}
+
+	void Game::StartGame()
+	{
+		auto& playerStats = Stats::GetInstance().GetPlayerStats();
+		playerStats.gamesPlayed++;
+
+		Stats::GetInstance().StartTimer();
 		SetGameState(GameState::Gameplay);
 	}
 }

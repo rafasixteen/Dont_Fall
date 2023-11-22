@@ -1,50 +1,26 @@
 #include "Stats.hpp"
+#include "Game.hpp"
 
 namespace Dont_Fall
 {
 	void Stats::StartTimer()
 	{
-		if (!paused)
-		{
-			INFO("Start Timer");
-			// Only start the timer if it's not already running
-			start = std::chrono::high_resolution_clock::now();
-			paused = false;
-		}
-		else
-		{
-			std::cerr << "Error: Cannot start the timer when it's already running. Call ResumeTimer() instead." << std::endl;
-		}
+		start = std::chrono::high_resolution_clock::now();
 	}
 
 	void Stats::StopTimer()
 	{
-		if (!paused)
-		{
-			INFO("Stop Timer");
-			// Only stop the timer if it's not already paused
-			stop = std::chrono::high_resolution_clock::now();
-			auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-			time = duration.count();
-		}
-		else
-		{
-			std::cerr << "Error: Cannot stop the timer when it's paused. Call ResumeTimer() before stopping." << std::endl;
-		}
+		stop = std::chrono::high_resolution_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+		time = duration.count();
 	}
 
 	void Stats::PauseTimer()
 	{
 		if (!paused)
 		{
-			INFO("Paused Timer");
-			// Only pause the timer if it's not already paused
 			pauseStart = std::chrono::high_resolution_clock::now();
 			paused = true;
-		}
-		else
-		{
-			std::cerr << "Error: Cannot pause the timer when it's already paused." << std::endl;
 		}
 	}
 
@@ -52,16 +28,10 @@ namespace Dont_Fall
 	{
 		if (paused)
 		{
-			INFO("Resume Timer");
-			// Only resume the timer if it's currently paused
 			auto pauseEnd = std::chrono::high_resolution_clock::now();
 			auto pauseDuration = std::chrono::duration_cast<std::chrono::milliseconds>(pauseEnd - pauseStart);
 			start += pauseDuration;
 			paused = false;
-		}
-		else
-		{
-			std::cerr << "Error: Cannot resume the timer when it's not paused. Call PauseTimer() before resuming." << std::endl;
 		}
 	}
 

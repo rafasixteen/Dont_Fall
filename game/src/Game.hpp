@@ -30,7 +30,8 @@ namespace Dont_Fall
 		static void SetGameState(GameState newState) { currentGameState = newState; }
 		static GameState GetGameState() { return currentGameState; }
 		Vector2 GetScreenCenter() const { return screenCenter; }
-		static void Restart();
+		static void ResetGame();
+		static void StartGame();
 
 	private:
 		void Start();

@@ -23,7 +23,7 @@ namespace Dont_Fall::RGUI
 	{
 		if (playButton.IsClicked())
 		{
-			Game::Restart();
+			Game::StartGame();
 		}
 
 		if (statisticsButton.IsClicked())
@@ -51,6 +51,9 @@ namespace Dont_Fall::RGUI
 		ImGui::End();
 
 		rlImGuiEnd();
+
+		//auto time = Stats::GetInstance().GetTime();
+		//DrawCurrentTimer(time);
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -64,7 +67,7 @@ namespace Dont_Fall::RGUI
 
 		if (restartButton.IsClicked())
 		{
-			Game::Restart();
+			Game::StartGame();
 		}
 	}
 
@@ -88,16 +91,13 @@ namespace Dont_Fall::RGUI
 	{
 		if (homeButton.IsClicked())
 		{
-			//Stats::GetInstance().ResumeTimer();
-			GameObjectMap::GetInstance().FindByName("Player").As<Player>()->Reset(); // TODO: Figure This Out??
-			// Bug: When The Game Is Paused The Timer Won't Stop (internally) And When This Button Is Clicked
-			// The Timer Saved To The File Will Not Account For The Time Paused 
+			Game::ResetGame();
 			Game::SetGameState(GameState::Start);
 		}
 
 		if (resumeButton.IsClicked())
 		{
-			//Stats::GetInstance().ResumeTimer();
+			Stats::GetInstance().ResumeTimer();
 			Game::SetGameState(GameState::Gameplay);
 		}
 
@@ -122,8 +122,8 @@ namespace Dont_Fall::RGUI
 
 		rlImGuiEnd();
 
-		auto time = stats.GetElapsedTime();
-		DrawCurrentTimer(0);
+		//auto time = stats.GetElapsedTime();
+		//DrawCurrentTimer(time);
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -137,8 +137,8 @@ namespace Dont_Fall::RGUI
 	{
 		DrawAmmoCount();
 
-		auto time = stats.GetElapsedTime();
-		DrawCurrentTimer(0);
+		//auto time = stats.GetElapsedTime();
+		//DrawCurrentTimer(time);
 	}
 
 	//---------------------------------------------------------------------------------------------//

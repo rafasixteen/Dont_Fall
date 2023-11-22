@@ -60,26 +60,18 @@ namespace Dont_Fall
 
 	void Player::Die()
 	{
-		//auto& playerStats = Stats::GetInstance().GetPlayerStats();
-		//playerStats.died++;
-		//INFO("Player Died");
-		Reset();
+		auto& playerStats = Stats::GetInstance().GetPlayerStats();
+		playerStats.died++;
+
+		Game::ResetGame();
 		// TODO: Play Died Sound
 		Game::SetGameState(GameState::GameOver);
 	}
 
 	void Player::Reset()
 	{
-		//Stats::GetInstance().StopTimer();
-		//auto& playerStats = Stats::GetInstance().GetPlayerStats();
-		//playerStats.time = Stats::GetInstance().GetTime();
-		//playerStats.gamesPlayed++;
-
 		rigidbodyComponent->velocity = { 0,0 };
 		transform.position = { WIDTH / 2,HEIGHT / 2 };
-		//INFO("Player Reseted");
-
-		//Stats::GetInstance().SaveStatsToFile("test.txt");
 	}
 
 	void Player::OnCollision(ColliderComponent& otherCollider)
