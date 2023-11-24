@@ -4,6 +4,7 @@
 #include <rlImGui.h>
 #include "Stats.hpp"
 #include <Player.hpp>
+#include "ImGuiUtils.hpp"
 
 namespace Dont_Fall::RGUI
 {
@@ -52,8 +53,8 @@ namespace Dont_Fall::RGUI
 
 		rlImGuiEnd();
 
-		//auto time = Stats::GetInstance().GetTime();
-		//DrawCurrentTimer(time);
+		auto time = Stats::GetInstance().GetTime();
+		DrawCurrentTimer(time);
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -103,6 +104,7 @@ namespace Dont_Fall::RGUI
 
 		if (settingsButton.IsClicked())
 		{
+			Game::ResetGame();
 			Game::SetGameState(GameState::Settings);
 		}
 
@@ -110,6 +112,8 @@ namespace Dont_Fall::RGUI
 		{
 			exit(0);
 		}
+
+		if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Gameplay); stats.ResumeTimer(); }
 	}
 
 	void GUI::RenderPaused()
@@ -122,30 +126,30 @@ namespace Dont_Fall::RGUI
 
 		rlImGuiEnd();
 
-		//auto time = stats.GetElapsedTime();
-		//DrawCurrentTimer(time);
+		auto time = stats.GetElapsedTime();
+		DrawCurrentTimer(time);
 	}
 
 	//---------------------------------------------------------------------------------------------//
 
 	void GUI::UpdateGameplay()
 	{
-
+		if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Paused); stats.PauseTimer(); }
 	}
 
 	void GUI::RenderGameplay()
 	{
 		DrawAmmoCount();
 
-		//auto time = stats.GetElapsedTime();
-		//DrawCurrentTimer(time);
+		auto time = stats.GetElapsedTime();
+		DrawCurrentTimer(time);
 	}
 
 	//---------------------------------------------------------------------------------------------//
 
 	void GUI::UpdateSettings()
 	{
-
+		if (IsKeyPressed(KEY_ESCAPE)) Game::SetGameState(GameState::Start);
 	}
 
 	void GUI::RenderSettings()
@@ -157,15 +161,16 @@ namespace Dont_Fall::RGUI
 
 	void GUI::UpdateStatistics()
 	{
-
+		if (IsKeyPressed(KEY_ESCAPE)) Game::SetGameState(GameState::Start);
 	}
 
 	void GUI::RenderStatistics()
 	{
-		DrawText("Statistics", screenCenter.x, screenCenter.y - 200, 100, BLACK);
+		auto playerStats = Stats::GetInstance().LoadStatsFromFile("stats.txt");
 
-		auto playerStats = Stats::GetInstance().LoadStatsFromFile("test.txt");
-		DrawText(Stats::FormatTime(playerStats.time).c_str(), screenCenter.x, screenCenter.y, 30, BLACK);
+		rlImGuiBegin();
+		ImGui::ShowStatisticsMenu(playerStats);
+		rlImGuiEnd();
 	}
 
 	//---------------------------------------------------------------------------------------------//

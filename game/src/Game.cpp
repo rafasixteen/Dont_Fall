@@ -41,14 +41,6 @@ namespace Dont_Fall
 
 			Update(frameInfo);
 			Draw();
-
-			//int time = stats.GetTime();
-			//std::string timeText = stats.FormatTime(time);
-			//DrawText(timeText.c_str(), 40, 40, 30, GREEN);
-
-			//int elapsed = stats.GetElapsedTime();
-			//std::string elapsedText = stats.FormatTime(elapsed);
-			//DrawText(elapsedText.c_str(), 40, 80, 30, GREEN);
 		}
 	}
 
@@ -96,7 +88,6 @@ namespace Dont_Fall
 			gui.UpdateStart();
 			break;
 		case GameState::Gameplay:
-			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Paused); stats.PauseTimer(); }
 			gameObjects.Update(frameInfo);
 			gui.UpdateGameplay();
 			break;
@@ -104,7 +95,6 @@ namespace Dont_Fall
 			gui.UpdateGameOver();
 			break;
 		case GameState::Paused:
-			if (IsKeyPressed(KEY_ESCAPE)) { Game::SetGameState(GameState::Gameplay); stats.ResumeTimer(); }
 			gui.UpdatePaused();
 			break;
 		case GameState::Settings:
@@ -208,7 +198,7 @@ namespace Dont_Fall
 
 		auto& playerStats = Stats::GetInstance().GetPlayerStats();
 		playerStats.time = Stats::GetInstance().GetTime();
-		Stats::GetInstance().SaveStatsToFile("test.txt");
+		Stats::GetInstance().SaveStatsToFile("stats.txt");
 	}
 
 	void Game::StartGame()
