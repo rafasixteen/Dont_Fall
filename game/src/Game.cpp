@@ -13,6 +13,7 @@
 namespace Dont_Fall
 {
 	GameState Game::currentGameState = GameState::Start;
+	GameSettings Game::gameSettings;
 
 	Game::Game()
 	{
@@ -115,7 +116,7 @@ namespace Dont_Fall
 
 	void Game::LoadGameObjects()
 	{
-		for (int i = 0; i < AMMO_COUNT; ++i)
+		for (int i = 0; i < gameSettings.ammoCount; ++i)
 		{
 			auto ammoGameObject = std::make_unique<Ammo>("Ammo" + std::to_string(i + 1));
 			ammoGameObject->SetTag("Ammo");
@@ -125,7 +126,7 @@ namespace Dont_Fall
 			gameObjects.Add(std::move(ammoGameObject));
 		}
 
-		for (int i = 0; i < OBSTACLES_COUNT; ++i)
+		for (int i = 0; i < gameSettings.obstaclesCount; ++i)
 		{
 			auto obstacleGameObject = std::make_unique<Obstacle>("Obstacle" + std::to_string(i + 1));
 			obstacleGameObject->SetTag("Obstacle");

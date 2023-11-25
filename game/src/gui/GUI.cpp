@@ -126,8 +126,11 @@ namespace Dont_Fall::RGUI
 
 		rlImGuiEnd();
 
-		auto time = stats.GetElapsedTime();
-		DrawCurrentTimer(time);
+		if (Game::GetGameSettings().showTimerWhilePlaying == true)
+		{
+			auto time = stats.GetElapsedTime();
+			DrawCurrentTimer(time);
+		}
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -141,8 +144,11 @@ namespace Dont_Fall::RGUI
 	{
 		DrawAmmoCount();
 
-		auto time = stats.GetElapsedTime();
-		DrawCurrentTimer(time);
+		if (Game::GetGameSettings().showTimerWhilePlaying == true)
+		{
+			auto time = stats.GetElapsedTime();
+			DrawCurrentTimer(time);
+		}
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -155,6 +161,10 @@ namespace Dont_Fall::RGUI
 	void GUI::RenderSettings()
 	{
 		DrawText("Settings", screenCenter.x, screenCenter.y, 100, BLACK);
+
+		rlImGuiBegin();
+		ImGui::ShowSettingsMenu(Game::GetGameSettings());
+		rlImGuiEnd();
 	}
 
 	//---------------------------------------------------------------------------------------------//
@@ -185,7 +195,7 @@ namespace Dont_Fall::RGUI
 	void GUI::DrawCurrentTimer(int milliseconds)
 	{
 		std::string timeText = Stats::FormatTime(milliseconds);
-		DrawText(timeText.c_str(), 100, 100, 40, BLACK);
+		timeLabel.Render(timeText.c_str());
 	}
 
 	void GUI::SetCustomStyle()

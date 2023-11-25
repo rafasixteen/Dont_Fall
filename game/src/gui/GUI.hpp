@@ -82,5 +82,6 @@ namespace Dont_Fall::RGUI
 		// StatisticsMenu //
 
 		Label ammoLabel{ {screenCenter.x,screenCenter.y} ,100,0,BLACK,"Assets/Fonts/Roboto/Roboto-Medium.ttf" };
+		Label timeLabel{ {screenCenter.x,(screenCenter.y /= 2) - 100} ,30,0,BLACK,"Assets/Fonts/Roboto/Roboto-Medium.ttf" };
 	};
 }

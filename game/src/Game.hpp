@@ -6,6 +6,7 @@
 #include "core/FrameInfo.hpp"
 #include "gui/GUI.hpp"
 #include <Stats.hpp>
+#include "core/GameSettings.hpp"
 
 namespace Dont_Fall
 {
@@ -29,6 +30,7 @@ namespace Dont_Fall
 
 		static void SetGameState(GameState newState) { currentGameState = newState; }
 		static GameState GetGameState() { return currentGameState; }
+		static GameSettings& GetGameSettings() { return gameSettings; }
 		Vector2 GetScreenCenter() const { return screenCenter; }
 		static void ResetGame();
 		static void StartGame();
@@ -43,10 +45,9 @@ namespace Dont_Fall
 		void UnloadAssets();
 
 		static GameState currentGameState;
+		static GameSettings gameSettings;
 
 		const Vector2 screenCenter = { static_cast<float>(WIDTH) / 2, static_cast<float>(HEIGHT) / 2 };
-		const int AMMO_COUNT = 3;
-		const int OBSTACLES_COUNT = 3;
 
 		Window window{ WIDTH,HEIGHT };
 		RGUI::GUI gui{ {screenCenter.x,screenCenter.y} };
