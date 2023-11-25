@@ -6,7 +6,7 @@
 #include "core/Utils.hpp"
 #include <gui/Button.hpp>
 
-namespace Dont_Fall::RGUI
+namespace RGUI
 {
 	class Menu
 	{

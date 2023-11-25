@@ -3,7 +3,7 @@
 #include "RectangleCollider.hpp"
 #include "CircleCollider.hpp"
 
-namespace Dont_Fall::Tests
+namespace Tests
 {
 	Collider::~Collider()
 	{
@@ -20,12 +20,12 @@ namespace Dont_Fall::Tests
 			{
 				/*switch (colliderType)
 				{
-				case Dont_Fall::Tests::Rectangle:
+				case Tests::Rectangle:
 					auto& collider = owner->GetComponent<RectangleCollider>()->collider;
 					collider.width = spriteComponent->GetTexture().width * owner->transform.scale;
 					collider.height = spriteComponent->GetTexture().height * owner->transform.scale;
 					break;
-				case Dont_Fall::Tests::Circle:
+				case Tests::Circle:
 					owner->GetComponent<CircleCollider>()->collider.radius = spriteComponent->GetTexture().width * owner->transform.scale / 2;
 					break;
 				default:

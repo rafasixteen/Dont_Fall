@@ -2,14 +2,11 @@
 
 #include "../core/Defines.hpp"
 
-namespace Dont_Fall
-{
-	class GameObject;
+class GameObject;
 
-	class Component
-	{
-	public:
-		virtual ~Component() {}
-		GameObject* owner = nullptr;
-	};
-}
+class Component
+{
+public:
+	virtual ~Component() {}
+	GameObject* owner = nullptr;
+};

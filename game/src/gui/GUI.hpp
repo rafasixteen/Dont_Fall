@@ -4,13 +4,14 @@
 #include "Menu.hpp"
 #include "Label.hpp"
 #include "../Stats.hpp"
+#include "core/GlobalVariables.hpp"
 
-namespace Dont_Fall::RGUI
+namespace RGUI
 {
 	class GUI
 	{
 	public:
-		GUI(ImVec2 screenCenter);
+		GUI();
 		~GUI();
 
 		void UpdateStart();
@@ -37,7 +38,7 @@ namespace Dont_Fall::RGUI
 		void DrawCurrentTimer(int milliseconds);
 
 		Stats& stats = Stats::GetInstance();
-		ImVec2 screenCenter{};
+		ImVec2 screenCenter = { Core::GlobalVariables::screenCenter.x, Core::GlobalVariables::screenCenter.y };
 
 		ImVec2 buttonSize{ 200,50 };
 		ImVec2 menuPosition{ 200,50 };

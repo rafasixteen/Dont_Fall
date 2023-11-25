@@ -1,6 +1,6 @@
 #include "Menu.hpp"
 
-namespace Dont_Fall::RGUI
+namespace RGUI
 {
 	Menu::Menu(std::string name, ImVec2 position, std::vector<GUIElement*>* elements, Utils::Origin originAnchor) : name{ name }, elements{ elements }
 	{

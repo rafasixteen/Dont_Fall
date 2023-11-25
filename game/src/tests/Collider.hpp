@@ -5,7 +5,7 @@
 #include <raylib.h>
 #include "../components/SpriteComponent.hpp"
 
-namespace Dont_Fall::Tests
+namespace Tests
 {
 	class Collider : public Component
 	{

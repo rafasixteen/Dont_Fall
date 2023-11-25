@@ -5,10 +5,11 @@
 #include "Stats.hpp"
 #include <Player.hpp>
 #include "ImGuiUtils.hpp"
+#include "core/GlobalVariables.hpp"
 
-namespace Dont_Fall::RGUI
+namespace RGUI
 {
-	GUI::GUI(ImVec2 screenCenter) : screenCenter{ screenCenter }
+	GUI::GUI()
 	{
 		// Initialization Done In Window.cpp
 	}
@@ -160,8 +161,6 @@ namespace Dont_Fall::RGUI
 
 	void GUI::RenderSettings()
 	{
-		DrawText("Settings", screenCenter.x, screenCenter.y, 100, BLACK);
-
 		rlImGuiBegin();
 		ImGui::ShowSettingsMenu(Game::GetGameSettings());
 		rlImGuiEnd();
@@ -189,12 +188,17 @@ namespace Dont_Fall::RGUI
 	{
 		auto& map = GameObjectMap::GetInstance();
 		int& ammoCount = map.FindByName("Gun").As<Gun>()->ammoCount;
+		ammoLabel.SetSize(100 * Core::GlobalVariables::ratio.x * Core::GlobalVariables::ratio.y);
+		ammoLabel.SetPosition(Core::GlobalVariables::screenCenter);
 		ammoLabel.Render(std::to_string(ammoCount).c_str());
 	}
 
 	void GUI::DrawCurrentTimer(int milliseconds)
 	{
 		std::string timeText = Stats::FormatTime(milliseconds);
+		timeLabel.SetSize(30 * Core::GlobalVariables::ratio.x * Core::GlobalVariables::ratio.y);
+		Vector2 screenCenter = Core::GlobalVariables::screenCenter;
+		timeLabel.SetPosition({ screenCenter.x ,(screenCenter.y /= 2) - 100 });
 		timeLabel.Render(timeText.c_str());
 	}
 

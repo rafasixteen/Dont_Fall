@@ -7,57 +7,53 @@
 #include "gui/GUI.hpp"
 #include <Stats.hpp>
 #include "core/GameSettings.hpp"
+#include "core/GlobalVariables.hpp"
 
-namespace Dont_Fall
+enum GameState
 {
-	enum GameState
-	{
-		Start,
-		Gameplay,
-		GameOver,
-		Paused,
-		Settings,
-		Statistics
-	};
+	Start,
+	Gameplay,
+	GameOver,
+	Paused,
+	Settings,
+	Statistics
+};
 
-	class Game
-	{
-	public:
-		Game();
-		~Game();
+class Game
+{
+public:
+	Game();
+	~Game();
 
-		void Run();
+	void Run();
 
-		static void SetGameState(GameState newState) { currentGameState = newState; }
-		static GameState GetGameState() { return currentGameState; }
-		static GameSettings& GetGameSettings() { return gameSettings; }
-		Vector2 GetScreenCenter() const { return screenCenter; }
-		static void ResetGame();
-		static void StartGame();
+	static void SetGameState(GameState newState) { currentGameState = newState; }
+	static GameState GetGameState() { return currentGameState; }
+	static GameSettings& GetGameSettings() { return gameSettings; }
 
-	private:
-		void Start();
-		void Update(FrameInfo& frameInfo);
-		void Draw();
+	static void ResetGame();
+	static void StartGame();
 
-		void LoadGameObjects();
-		void LoadAssets();
-		void UnloadAssets();
+private:
+	void Start();
+	void Update(FrameInfo& frameInfo);
+	void Draw();
 
-		static GameState currentGameState;
-		static GameSettings gameSettings;
+	void LoadGameObjects();
+	void LoadAssets();
+	void UnloadAssets();
 
-		const Vector2 screenCenter = { static_cast<float>(WIDTH) / 2, static_cast<float>(HEIGHT) / 2 };
+	static GameState currentGameState;
+	static GameSettings gameSettings;
 
-		Window window{ WIDTH,HEIGHT };
-		RGUI::GUI gui{ {screenCenter.x,screenCenter.y} };
+	Window window{ Core::GlobalVariables::initialWidth,Core::GlobalVariables::initialHeight };
+	RGUI::GUI gui{};
 
-		GameObjectMap& gameObjects = GameObjectMap::GetInstance();
-		Stats& stats = Stats::GetInstance();
+	GameObjectMap& gameObjects = GameObjectMap::GetInstance();
+	Stats& stats = Stats::GetInstance();
 
-		std::unordered_map<std::string, Texture2D> textures;
+	std::unordered_map<std::string, Texture2D> textures;
 
-		float deltaTime = 0.0f;
-		int fps = 0;;
-	};
-}
+	float deltaTime = 0.0f;
+	int fps = 0;;
+};

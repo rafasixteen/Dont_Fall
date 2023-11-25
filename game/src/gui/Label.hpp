@@ -4,7 +4,7 @@
 #include "../core/Defines.hpp"
 #include "../core/Utils.hpp"
 
-namespace Dont_Fall::RGUI
+namespace RGUI
 {
 	class Label
 	{
@@ -13,6 +13,8 @@ namespace Dont_Fall::RGUI
 		~Label();
 
 		void Render(std::string text);
+		void SetPosition(Vector2 newPosition) { position = newPosition; }
+		void SetSize(int newSize) { size = newSize; }
 
 	private:
 		Vector2 position{};

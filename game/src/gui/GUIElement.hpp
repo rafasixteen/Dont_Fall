@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Dont_Fall::RGUI
+namespace RGUI
 {
 	class GUIElement
 	{

@@ -1,7 +1,7 @@
 #include "RectangleCollider.hpp"
 #include "../GameObjectMap.hpp"
 
-namespace Dont_Fall::Tests
+namespace Tests
 {
 	RectangleCollider::RectangleCollider()
 	{
@@ -39,7 +39,7 @@ namespace Dont_Fall::Tests
 		auto& otherCollider = *other.owner->GetComponent<RectangleCollider>();
 		switch (other.colliderType)
 		{
-		case 0: 
+		case 0:
 			break;
 		case 1:
 			break;

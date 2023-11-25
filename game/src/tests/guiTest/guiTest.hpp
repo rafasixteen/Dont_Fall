@@ -2,7 +2,7 @@
 
 #include <imgui.h>
 
-namespace Dont_Fall::Test
+namespace Test
 {
 	class GuiTest
 	{

@@ -1,24 +1,21 @@
 #pragma once
 
-namespace Dont_Fall
+struct GameSettings
 {
-	struct GameSettings
+	bool showTimerWhilePlaying;
+	int ammoCount;
+	int obstaclesCount;
+
+	GameSettings()
 	{
-		bool showTimerWhilePlaying;
-		int ammoCount;
-		int obstaclesCount;
+		DefaultGameSettings(*this);
+	}
 
-		GameSettings()
-		{
-			DefaultGameSettings(*this);
-		}
+	static void DefaultGameSettings(GameSettings& gameSettings)
+	{
+		gameSettings.showTimerWhilePlaying = false;
 
-		static void DefaultGameSettings(GameSettings& gameSettings)
-		{
-			gameSettings.showTimerWhilePlaying = false;
-
-			gameSettings.ammoCount = 3;
-			gameSettings.obstaclesCount = 3;
-		}
-	};
-}
+		gameSettings.ammoCount = 3;
+		gameSettings.obstaclesCount = 3;
+	}
+};

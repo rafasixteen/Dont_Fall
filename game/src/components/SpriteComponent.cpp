@@ -2,27 +2,31 @@
 #include "../core/Defines.hpp"
 #include "../core/Utils.hpp"
 #include "../GameObject.hpp"
+#include "../core/GlobalVariables.hpp"
 
-namespace Dont_Fall
+SpriteComponent::SpriteComponent(Texture2D& texture, Utils::Origin originAnchor) : texture{ texture }, originAnchor{ originAnchor }, width{ texture.width }, height{ texture.height } {}
+
+SpriteComponent::~SpriteComponent() { }
+
+void SpriteComponent::Start()
 {
-	SpriteComponent::SpriteComponent(Texture2D& texture, Utils::Origin originAnchor) : texture{ texture }, originAnchor{ originAnchor }, width{ texture.width }, height{ texture.height } {}
+	float newWidth = width * owner->transform.scale;
+	float newHeight = height * owner->transform.scale;
 
-	SpriteComponent::~SpriteComponent() { }
+	origin = Utils::GetOrigin(newWidth, newHeight, originAnchor);
+}
 
-	void SpriteComponent::Start()
-	{
-		float newWidth = width * owner->transform.scale;
-		float newHeight = height * owner->transform.scale;
+void SpriteComponent::Draw()
+{
+	Vector2 ratio = Core::GlobalVariables::ratio;
 
-		origin = Utils::GetOrigin(newWidth, newHeight, originAnchor);
-	}
+	float newWidth = width * owner->transform.scale;
+	float newHeight = height * owner->transform.scale;
+	origin = Utils::GetOrigin(newWidth * ratio.x, newHeight * ratio.y, originAnchor);
 
-	void SpriteComponent::Draw()
-	{
-		auto transform = owner->transform;
-		Rectangle sourceRec = { 0.0f, 0.0f, width, height };
-		Rectangle destRec = { transform.position.x , transform.position.y , width * transform.scale, height * transform.scale };
+	auto transform = owner->transform;
+	Rectangle sourceRec = { 0.0f, 0.0f, width, height };
+	Rectangle destRec = { transform.position.x , transform.position.y , width * transform.scale * ratio.x, height * transform.scale * ratio.y };
 
-		DrawTexturePro(texture, sourceRec, destRec, origin, transform.rotation, WHITE);
-	}
+	DrawTexturePro(texture, sourceRec, destRec, origin, transform.rotation, WHITE);
 }

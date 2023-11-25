@@ -3,7 +3,7 @@
 #include "Collider.hpp"
 #include <raylib.h>
 
-namespace Dont_Fall::Tests
+namespace Tests
 {
 	class RectangleCollider : public Collider
 	{

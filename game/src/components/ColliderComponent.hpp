@@ -5,33 +5,34 @@
 #include "../GameObject.hpp"
 #include "SpriteComponent.hpp"
 
-namespace Dont_Fall
+class ColliderComponent : public Component
 {
-	class ColliderComponent : public Component
-	{
-	public:
-		using CollisionCallback = std::function<void(ColliderComponent&)>;
+public:
+	using CollisionCallback = std::function<void(ColliderComponent&)>;
 
-		void SetCollisionCallback(const CollisionCallback& callback) { collisionCallback = callback; }
+	void SetCollisionCallback(const CollisionCallback& callback) { collisionCallback = callback; }
 
-		ColliderComponent();
-		ColliderComponent(int width, int height);
-		~ColliderComponent() {}
+	ColliderComponent();
+	ColliderComponent(int width, int height);
+	~ColliderComponent() {}
 
-		void Start();
-		void Update(FrameInfo& frameInfo);
-		void Draw();
+	void Start();
+	void Update(FrameInfo& frameInfo);
+	void Draw();
 
-		Rectangle GetCollider() const { return collider; }
-		bool CheckCollision(const ColliderComponent& other) const { return CheckCollisionRecs(collider, other.collider); }
+	Rectangle GetCollider() const { return collider; }
+	bool CheckCollision(const ColliderComponent& other) const { return CheckCollisionRecs(collider, other.collider); }
 
-	private:
-		Rectangle collider{};
-		Vector2 origin{};
-		bool useSpriteCollider = false;
-		bool drawCollider = true;
+private:
+	Rectangle collider{};
+	Vector2 origin{};
 
-		CollisionCallback collisionCallback;
+	bool useSpriteCollider = false;
+	bool drawCollider = true;
 
-	};
-}
+	int initialWidth = 0;
+	int initialHeight = 0;
+
+	CollisionCallback collisionCallback;
+
+};

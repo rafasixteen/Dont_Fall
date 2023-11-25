@@ -2,7 +2,7 @@
 
 #include <raygui.h>
 
-namespace Dont_Fall::RGUI
+namespace RGUI
 {
 	Label::Label(Vector2 position, const int size, const int spacing, Color color, std::string fontFilepath)
 	{
@@ -10,7 +10,7 @@ namespace Dont_Fall::RGUI
 		this->size = size;
 		this->spacing = spacing;
 		this->color = color;
-		font = LoadFontEx(fontFilepath.c_str(), size, nullptr, 0);
+		font = LoadFontEx(fontFilepath.c_str(), size , nullptr, 0);
 	}
 
 	Label::~Label()

@@ -6,7 +6,7 @@
 
 namespace ImGui
 {
-	void ShowStatisticsMenu(Dont_Fall::PlayerStats playerStats);
+	void ShowStatisticsMenu(PlayerStats playerStats);
 
-	void ShowSettingsMenu(Dont_Fall::GameSettings& gameSettings);
+	void ShowSettingsMenu(GameSettings& gameSettings);
 }

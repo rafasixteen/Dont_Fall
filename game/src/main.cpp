@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	Dont_Fall::Game game{};
+	Game game{};
 
 	try
 	{

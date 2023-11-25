@@ -1,28 +1,28 @@
 #include "Window.hpp"
 #include "raylib.h"
 #include <rlImGui.h>
-
+#include "core/GlobalVariables.hpp"
 #include "gui/GUI.hpp"
 
-namespace Dont_Fall
+Window::Window(const int width, const int height)
 {
-	Window::Window(const int width, const int height)
-	{
-		InitWindow(width, height, windowName);
+	InitWindow(width, height, windowName);
 
-		//SetWindowIcon();
-		SetWindowMinSize(WIDTH / 1.5f, HEIGHT / 1.5f);
+	//SetWindowIcon();
+	SetWindowMinSize(Core::GlobalVariables::minimunWindowWidth, Core::GlobalVariables::minimunWindowHeight);
 
-		//SetWindowState(FLAG_WINDOW_RESIZABLE);
+	SetWindowState(FLAG_WINDOW_RESIZABLE);
 
-		rlImGuiSetup(true);
-		Dont_Fall::RGUI::GUI::SetCustomStyle();
-	}
+	rlImGuiSetup(true);
+	RGUI::GUI::SetCustomStyle();
 
-	Window::~Window()
-	{
-		CloseWindow();
-	}
-
+	Core::GlobalVariables::UpdateGlobals();
 }
+
+Window::~Window()
+{
+	CloseWindow();
+}
+
+
 

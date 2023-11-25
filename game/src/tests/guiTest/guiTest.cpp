@@ -4,7 +4,7 @@
 #include <core/Defines.hpp>
 #include "Game.hpp"
 
-namespace Dont_Fall::Test
+namespace Test
 {
 	GuiTest::GuiTest(ImVec2 screenCenter) : screenCenter{ screenCenter }
 	{

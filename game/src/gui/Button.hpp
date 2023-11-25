@@ -6,7 +6,7 @@
 #include "../core/Utils.hpp"
 #include "GUIElement.hpp"
 
-namespace Dont_Fall::RGUI
+namespace RGUI
 {
 	class Button : public GUIElement
 	{

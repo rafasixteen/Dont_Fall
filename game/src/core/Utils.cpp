@@ -1,7 +1,7 @@
 #include "Utils.hpp"
 #include <raylib.h>
 
-namespace Dont_Fall::Utils
+namespace Utils
 {
 	void DrawFrameTime(int posX, int posY, float frameTime)
 	{

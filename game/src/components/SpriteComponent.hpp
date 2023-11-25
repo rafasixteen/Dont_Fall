@@ -5,39 +5,23 @@
 #include "Component.hpp"
 #include "../core/Utils.hpp"
 
-namespace Dont_Fall
+class SpriteComponent : public Component
 {
-	//enum Origin
-	//{
-	//	TopLeft,
-	//	TopRight,
-	//	BottomLeft,
-	//	BottomRight,
-	//	Center,
-	//	LeftCenter,
-	//	RightCenter,
-	//	TopCenter,
-	//	BottomCenter
-	//};
+public:
+	SpriteComponent(Texture2D& texture, Utils::Origin originAnchor);
+	~SpriteComponent();
 
-	class SpriteComponent : public Component
-	{
-	public:
-		SpriteComponent(Texture2D& texture, Utils::Origin originAnchor);
-		~SpriteComponent();
+	Texture2D& GetTexture() { return texture; }
+	Vector2 GetOrigin() const { return origin; }
 
-		Texture2D& GetTexture() { return texture; }
-		Vector2 GetOrigin() const { return origin; }
+	void Start();
+	void Draw();
 
-		void Start();
-		void Draw();
+private:
+	Texture2D& texture;
+	int width;
+	int height;
 
-	private:
-		Texture2D& texture;
-		int width;
-		int height;
-
-		Utils::Origin originAnchor;
-		Vector2 origin{};
-	};
-}
+	Utils::Origin originAnchor;
+	Vector2 origin{};
+};

@@ -7,7 +7,7 @@
 
 constexpr int DEFAULT_FONT_SIZE = 32;
 
-namespace Dont_Fall::Utils
+namespace Utils
 {
 	void DrawFrameTime(int posX, int posY, float frameTime);
 

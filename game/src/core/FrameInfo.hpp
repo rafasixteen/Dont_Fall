@@ -2,13 +2,14 @@
 
 #include "Defines.hpp"
 
-namespace Dont_Fall
-{
-	class GameObjectMap;
+class GameObjectMap;
 
-	struct FrameInfo
-	{
-		float deltaTime;
-		GameObjectMap& gameObjects;
-	};
-}
+struct FrameInfo
+{
+	float deltaTime;
+	GameObjectMap& gameObjects;
+
+	int currentWidth;
+	int currentHeight;
+};
+

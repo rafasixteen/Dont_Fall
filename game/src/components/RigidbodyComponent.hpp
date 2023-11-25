@@ -3,23 +3,23 @@
 #include <raylib.h>
 #include "Component.hpp"
 #include "../GameObject.hpp"
+#include "core/GlobalVariables.hpp"
+#include <raymath.h>
 
-namespace Dont_Fall
+class RigidbodyComponent : public Component
 {
-	class RigidbodyComponent : public Component
-	{
-	public:
-		RigidbodyComponent();
-		~RigidbodyComponent();
+public:
+	RigidbodyComponent();
+	~RigidbodyComponent();
 
-		void Update(FrameInfo &frameInfo);
+	void Update(FrameInfo& frameInfo);
 
-		void ApplyForce(const Vector2 force);
-		void SetVelocity(const Vector2 velocity) { this->velocity = velocity; }
+	void ApplyForce(const Vector2 force);
+	void SetVelocity(const Vector2 velocity) { this->velocity = velocity; }
 
-		Vector2 velocity{};
-		float mass = 1.0f;
-		bool useGravity = true;
-		const float gravityForce = 9.8f * 50.0f;
-	};
-}
+	Vector2 ratio = Core::GlobalVariables::ratio;
+	Vector2 velocity{};
+	float mass = 1.0f;
+	bool useGravity = true;
+	const float gravityForce = 9.8f * 50.0f;
+};

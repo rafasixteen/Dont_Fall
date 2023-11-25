@@ -1,36 +1,34 @@
 #include "Obstacle.hpp"
+#include "core/GlobalVariables.hpp"
 
-namespace Dont_Fall
+Obstacle::Obstacle(std::string name) : GameObject{ name } {}
+
+void Obstacle::Draw()
 {
-	Obstacle::Obstacle(std::string name) : GameObject{ name } {}
+	GameObject::Draw();
+}
 
-	void Obstacle::Draw()
-	{
-		GameObject::Draw();
-	}
+void Obstacle::Start()
+{
+	GameObject::Start();
 
-	void Obstacle::Start()
-	{
-		GameObject::Start();
+	if (!(spriteComponent = GetComponent<SpriteComponent>())) ERROR("'" + GetName() + "'" + " Doesn't Have A SpriteComponent");
+	if (!(rigidbodyComponent = GetComponent<RigidbodyComponent>())) ERROR("'" + GetName() + "'" + " Doesn't Have A RigidbodyComponent");
 
-		if (!(spriteComponent = GetComponent<SpriteComponent>())) ERROR("'" + GetName() + "'" + " Doesn't Have A SpriteComponent");
-		if (!(rigidbodyComponent = GetComponent<RigidbodyComponent>())) ERROR("'" + GetName() + "'" + " Doesn't Have A RigidbodyComponent");
+	rigidbodyComponent->useGravity = false;
+	rigidbodyComponent->SetVelocity({ 0,30 });
 
-		rigidbodyComponent->useGravity = false;
-		rigidbodyComponent->SetVelocity({ 0,30 });
+	GenerateRandomPosition();
+}
 
-		GenerateRandomPosition();
-	}
+void Obstacle::Update(FrameInfo& frameInfo)
+{
+	GameObject::Update(frameInfo);
+	transform.rotation += 100 * frameInfo.deltaTime;
+}
 
-	void Obstacle::Update(FrameInfo& frameInfo)
-	{
-		GameObject::Update(frameInfo);
-		transform.rotation += 100 * frameInfo.deltaTime;
-	}
-
-	void Obstacle::GenerateRandomPosition()
-	{
-		transform.position.x = GetRandomValue(0, WIDTH);
-		transform.position.y = -spriteComponent->GetTexture().height * transform.scale;
-	}
+void Obstacle::GenerateRandomPosition()
+{
+	transform.position.x = GetRandomValue(0, Core::GlobalVariables::currentWidth);
+	transform.position.y = -spriteComponent->GetTexture().height * transform.scale;
 }

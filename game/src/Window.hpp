@@ -2,15 +2,12 @@
 
 #include "core/Defines.hpp"
 
-namespace Dont_Fall
+class Window
 {
-	class Window
-	{
-	public:
-		Window(const int width, const int height);
-		~Window();
+public:
+	Window(const int width, const int height);
+	~Window();
 
-	private:
-		const char* windowName = "Don't Fall";
-	};
-}
+private:
+	const char* windowName = "Don't Fall";
+};

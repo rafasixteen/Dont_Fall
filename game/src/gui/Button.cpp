@@ -1,6 +1,6 @@
 #include "Button.hpp"
 
-namespace Dont_Fall::RGUI
+namespace RGUI
 {
 	Button::Button(std::string name, ImVec2 size) : size{ size }, name{ name }
 	{

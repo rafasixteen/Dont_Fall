@@ -1,12 +1,23 @@
 #pragma once
 
-namespace Dont_Fall::Core
+#include <raylib.h>
+
+namespace Core
 {
 	class GlobalVariables
 	{
 	public:
-		static int test;
-	};
+		static Vector2 screenCenter;
+		static int currentWidth;
+		static int currentHeight;
+		static Vector2 ratio;
 
-	int GlobalVariables::test = 0;
+		static int initialWidth;
+		static int initialHeight;
+
+		static int minimunWindowWidth;
+		static int minimunWindowHeight;
+
+		static void UpdateGlobals();
+	};
 }
