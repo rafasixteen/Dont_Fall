@@ -2,6 +2,7 @@
 #include <raymath.h>
 #include "components/RigidbodyComponent.hpp"
 #include "core/GlobalVariables.hpp"
+#include "AudioManager.hpp"
 
 Gun::Gun(std::string name) : GameObject{ name } {}
 
@@ -41,14 +42,23 @@ void Gun::Fire()
 		return;
 	}
 
-	if (ammoCount <= 0) return;
-	ammoCount--;
+	if (ammoCount > 0)
+	{
+		AudioManager::GetInstance().Play("Shoot");
 
-	auto playerRigidbody = parent->GetComponent<RigidbodyComponent>();
+		ammoCount--;
 
-	float oppositeAngle = transform.rotation + 180.0f;
-	Vector2 force = Vector2Rotate({ 10.0f, 0.0f }, DEG2RAD * oppositeAngle);
-	int magnitude = 75;
+		auto playerRigidbody = parent->GetComponent<RigidbodyComponent>();
 
-	playerRigidbody->SetVelocity({ force.x * magnitude,force.y * magnitude });
+		float oppositeAngle = transform.rotation + 180.0f;
+		Vector2 force = Vector2Rotate({ 10.0f, 0.0f }, DEG2RAD * oppositeAngle);
+		int magnitude = 75;
+
+		playerRigidbody->SetVelocity({ force.x * magnitude,force.y * magnitude });
+	}
+	else
+	{
+		AudioManager::GetInstance().Play("CantShoot");
+		return;
+	}
 }

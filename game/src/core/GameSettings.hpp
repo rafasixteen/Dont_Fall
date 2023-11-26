@@ -2,9 +2,24 @@
 
 struct GameSettings
 {
-	bool showTimerWhilePlaying;
-	int ammoCount;
-	int obstaclesCount;
+	struct AudioSettings
+	{
+		int masterVolume;
+		int sfxVolume;
+		int musicVolume;
+
+		bool playMusic;
+	};
+
+	struct GameplaySettings
+	{
+		bool showTimerWhilePlaying;
+		bool showFPS;
+		bool showHitboxes;
+	};
+
+	AudioSettings audioSettings;
+	GameplaySettings gameplaySettings;
 
 	GameSettings()
 	{
@@ -13,9 +28,13 @@ struct GameSettings
 
 	static void DefaultGameSettings(GameSettings& gameSettings)
 	{
-		gameSettings.showTimerWhilePlaying = false;
+		gameSettings.audioSettings.masterVolume = 5;
+		gameSettings.audioSettings.sfxVolume = 100;
+		gameSettings.audioSettings.musicVolume = 100;
+		gameSettings.audioSettings.playMusic = true;
 
-		gameSettings.ammoCount = 3;
-		gameSettings.obstaclesCount = 3;
+		gameSettings.gameplaySettings.showTimerWhilePlaying = true;
+		gameSettings.gameplaySettings.showFPS = true;
+		gameSettings.gameplaySettings.showHitboxes = false;
 	}
 };

@@ -5,11 +5,11 @@ namespace ImGui
 {
 	void ShowStatisticsMenu(PlayerStats playerStats)
 	{
-		ImGui::Begin("Player Statistics", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
+		ImGui::Begin("Player Statistics", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground);
 
-		ImVec2 size = { 400 * Core::GlobalVariables::ratio.x,400 * Core::GlobalVariables::ratio.y };
+		ImVec2 size = { 400 ,400 };
 		ImGui::SetWindowSize("Player Statistics", size);
-		ImGui::SetWindowPos("Player Statistics", { Core::GlobalVariables::screenCenter.x - size.x/2,Core::GlobalVariables::screenCenter.y - size.y/2 });
+		ImGui::SetWindowPos("Player Statistics", { Core::GlobalVariables::screenCenter.x - size.x / 2,Core::GlobalVariables::screenCenter.y - size.y / 2 });
 
 		std::string formmatedTime = "Time: ";
 		formmatedTime += Stats::FormatTime(playerStats.time);
@@ -24,16 +24,19 @@ namespace ImGui
 
 	void ShowSettingsMenu(GameSettings& gameSettings)
 	{
-		ImGui::Begin("Game Settings", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
+		ImGui::Begin("Game Settings", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground);
 
-		ImVec2 size = { 400 * Core::GlobalVariables::ratio.x,400 * Core::GlobalVariables::ratio.y };
+		ImVec2 size = { static_cast<float>(Core::GlobalVariables::currentWidth), static_cast<float>(Core::GlobalVariables::currentHeight) };
 		ImGui::SetWindowSize("Game Settings", size);
 		ImGui::SetWindowPos("Game Settings", { Core::GlobalVariables::screenCenter.x - size.x / 2,Core::GlobalVariables::screenCenter.y - size.y / 2 });
 
-		ImGui::Checkbox("Show Timer While Playing", &gameSettings.showTimerWhilePlaying);
-		ImGui::SliderInt("Ammo Slider", &gameSettings.ammoCount, 1, 10);
-		ImGui::SliderInt("Obstacles Slider", &gameSettings.obstaclesCount, 1, 10);
+		ImGui::Checkbox("Show Timer While Playing", &gameSettings.gameplaySettings.showTimerWhilePlaying);
+		ImGui::Checkbox("Show FPS", &gameSettings.gameplaySettings.showFPS);
+		ImGui::Checkbox("Show Hitboxes", &gameSettings.gameplaySettings.showHitboxes);
 
+		ImGui::SliderInt("Master Volume", &gameSettings.audioSettings.masterVolume, 0, 100);
+		ImGui::SliderInt("SFX Volume", &gameSettings.audioSettings.sfxVolume, 0, 100);
+		ImGui::SliderInt("Music Volume", &gameSettings.audioSettings.musicVolume, 0, 100);
 
 		ImGui::End();
 	}

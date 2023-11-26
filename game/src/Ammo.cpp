@@ -4,6 +4,7 @@
 #include "Gun.hpp"
 #include "Stats.hpp"
 #include "core/GlobalVariables.hpp"
+#include <AudioManager.hpp>
 
 Ammo::Ammo(std::string name) : GameObject{ name } {}
 
@@ -28,6 +29,7 @@ void Ammo::Collect() const
 	auto& map = GameObjectMap::GetInstance().GetMap();
 	map["Gun"]->As<Gun>()->ammoCount++;
 	Stats::GetInstance().GetPlayerStats().ammoCollected++;
+	AudioManager::GetInstance().Play("Reload");
 }
 
 void Ammo::GenerateRandomPosition()

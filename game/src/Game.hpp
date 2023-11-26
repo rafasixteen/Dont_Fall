@@ -8,6 +8,7 @@
 #include <Stats.hpp>
 #include "core/GameSettings.hpp"
 #include "core/GlobalVariables.hpp"
+#include "AudioManager.hpp"
 
 enum GameState
 {
@@ -49,6 +50,7 @@ private:
 	Window window{ Core::GlobalVariables::initialWidth,Core::GlobalVariables::initialHeight };
 	RGUI::GUI gui{};
 
+	AudioManager& audioManager = AudioManager::GetInstance();
 	GameObjectMap& gameObjects = GameObjectMap::GetInstance();
 	Stats& stats = Stats::GetInstance();
 

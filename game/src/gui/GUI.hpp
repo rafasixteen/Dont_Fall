@@ -33,8 +33,10 @@ namespace RGUI
 		void RenderStatistics();
 
 		static void SetCustomStyle();
+		static void SetCustomColors();
 	private:
 		void DrawAmmoCount();
+		void DrawFPS();
 		void DrawCurrentTimer(int milliseconds);
 
 		Stats& stats = Stats::GetInstance();
@@ -84,5 +86,6 @@ namespace RGUI
 
 		Label ammoLabel{ {screenCenter.x,screenCenter.y} ,100,0,BLACK,"Assets/Fonts/Roboto/Roboto-Medium.ttf" };
 		Label timeLabel{ {screenCenter.x,(screenCenter.y /= 2) - 100} ,30,0,BLACK,"Assets/Fonts/Roboto/Roboto-Medium.ttf" };
+		Label fpsLabel{ {0,0},20,0,BLACK,"Assets/Fonts/Roboto/Roboto-Medium.ttf" };
 	};
 }

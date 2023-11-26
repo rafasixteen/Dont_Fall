@@ -17,7 +17,6 @@ public:
 	void ApplyForce(const Vector2 force);
 	void SetVelocity(const Vector2 velocity) { this->velocity = velocity; }
 
-	Vector2 ratio = Core::GlobalVariables::ratio;
 	Vector2 velocity{};
 	float mass = 1.0f;
 	bool useGravity = true;

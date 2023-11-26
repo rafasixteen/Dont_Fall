@@ -28,10 +28,6 @@ private:
 	Vector2 origin{};
 
 	bool useSpriteCollider = false;
-	bool drawCollider = true;
-
-	int initialWidth = 0;
-	int initialHeight = 0;
 
 	CollisionCallback collisionCallback;
 

@@ -10,7 +10,6 @@ namespace Core
 		static Vector2 screenCenter;
 		static int currentWidth;
 		static int currentHeight;
-		static Vector2 ratio;
 
 		static int initialWidth;
 		static int initialHeight;

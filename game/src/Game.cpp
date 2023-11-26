@@ -16,7 +16,9 @@ GameSettings Game::gameSettings;
 Game::Game()
 {
 	SetExitKey(KEY_NULL);
-	SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));
+	//SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));
+	InitAudioDevice();
+	SetMasterVolume(gameSettings.audioSettings.masterVolume / 100.0f);
 
 	LoadAssets();
 	LoadGameObjects();
@@ -24,6 +26,7 @@ Game::Game()
 
 Game::~Game()
 {
+	CloseAudioDevice();
 	UnloadAssets();
 }
 
@@ -52,9 +55,6 @@ void Game::Draw()
 {
 	BeginDrawing();
 	ClearBackground(LIGHTGRAY);
-
-	Utils::DrawFPS(0, 0, fps);
-	Utils::DrawFrameTime(0, 20, deltaTime);
 
 	switch (currentGameState)
 	{
@@ -89,10 +89,12 @@ void Game::Update(FrameInfo& frameInfo)
 	switch (currentGameState)
 	{
 	case GameState::Start:
+		audioManager.PlayMusic("Menu");
 		gui.UpdateStart();
 		break;
 	case GameState::Gameplay:
 		gameObjects.Update(frameInfo);
+		audioManager.PlayMusic("Gameplay");
 		gui.UpdateGameplay();
 		break;
 	case GameState::GameOver:
@@ -119,7 +121,7 @@ void Game::Start()
 
 void Game::LoadGameObjects()
 {
-	for (int i = 0; i < gameSettings.ammoCount; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
 		auto ammoGameObject = std::make_unique<Ammo>("Ammo" + std::to_string(i + 1));
 		ammoGameObject->SetTag("Ammo");
@@ -129,7 +131,7 @@ void Game::LoadGameObjects()
 		gameObjects.Add(std::move(ammoGameObject));
 	}
 
-	for (int i = 0; i < gameSettings.obstaclesCount; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
 		auto obstacleGameObject = std::make_unique<Obstacle>("Obstacle" + std::to_string(i + 1));
 		obstacleGameObject->SetTag("Obstacle");
@@ -168,6 +170,17 @@ void Game::LoadAssets()
 
 	Texture2D sawTexture = LoadTexture("Assets/Sprites/Saw.png");
 	textures.emplace("Saw", std::move(sawTexture));
+
+	auto& audioManager = AudioManager::GetInstance();
+	audioManager.LoadAudio("Shoot", "Assets/Audio/Shoot.wav");
+	audioManager.LoadAudio("CantShoot", "Assets/Audio/CantShoot.wav");
+	audioManager.LoadAudio("Died", "Assets/Audio/Died.wav");
+	audioManager.LoadAudio("Reload", "Assets/Audio/Reload.wav");
+	audioManager.LoadAudio("Spawn", "Assets/Audio/Spawn.wav");
+
+	audioManager.LoadMusic("Gameplay", "Assets/Music/Gameplay.mp3");
+	//audioManager.LoadMusic("Menu", "Assets/Music/Cipher2.mp3");
+	audioManager.LoadMusic("Menu", "Assets/Music/Space-Jazz.mp3");
 }
 
 void Game::UnloadAssets()
@@ -211,5 +224,6 @@ void Game::StartGame()
 	playerStats.gamesPlayed++;
 
 	Stats::GetInstance().StartTimer();
+	AudioManager::GetInstance().Play("Spawn");
 	SetGameState(GameState::Gameplay);
 }

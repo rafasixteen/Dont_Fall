@@ -8,6 +8,7 @@
 #include "Obstacle.hpp"
 #include "Game.hpp"
 #include "Stats.hpp"
+#include <AudioManager.hpp>
 
 Player::Player(std::string name) : GameObject{ name } {}
 
@@ -60,18 +61,15 @@ void Player::Die()
 {
 	auto& playerStats = Stats::GetInstance().GetPlayerStats();
 	playerStats.died++;
+	AudioManager::GetInstance().Play("Died");
 
 	Game::ResetGame();
-	// TODO: Play Died Sound
 	Game::SetGameState(GameState::GameOver);
 }
 
 void Player::Reset()
 {
-	float currentWidth = Core::GlobalVariables::currentWidth;
-	float currentHeight = Core::GlobalVariables::currentHeight;
-
-	transform.position = { currentWidth / 2,currentHeight / 2 };
+	transform.position = Core::GlobalVariables::screenCenter;
 	rigidbodyComponent->velocity = { 0,0 };
 }
 

@@ -2,6 +2,7 @@
 
 #include "Defines.hpp"
 #include <raylib.h>
+#include <imgui.h>
 
 #define BENCHMARK(code) Utils::Benchmark([&]() { code; })
 
@@ -39,4 +40,6 @@ namespace Utils
 		BottomCenter
 	};
 	Vector2 GetOrigin(float width, float height, Origin originAnchor);
+
+	ImVec4 HexToRGBA(const std::string& hex,bool normalize = true);
 }

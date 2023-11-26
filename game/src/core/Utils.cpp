@@ -55,4 +55,27 @@ namespace Utils
 
 		return origin;
 	}
+
+	ImVec4 HexToRGBA(const std::string& hex, bool normalize)
+	{
+		std::istringstream iss(hex);
+		unsigned int value;
+		iss >> std::hex >> value;
+
+		ImVec4 color{};
+		color.x = static_cast<float>((value >> 24) & 0xFF);
+		color.y = static_cast<float>((value >> 16) & 0xFF);
+		color.z = static_cast<float>((value >> 8) & 0xFF);
+		color.w = static_cast<float>(value & 0xFF);
+
+		if (normalize)
+		{
+			color.x /= 255.0f;
+			color.y /= 255.0f;
+			color.z /= 255.0f;
+			color.w /= 255.0f;
+		}
+
+		return color;
+	}
 }
