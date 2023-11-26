@@ -35,6 +35,8 @@ public:
 	static void ResetGame();
 	static void StartGame();
 
+	static void SaveSettingsToFile();
+	static void LoadSettingsFromFile();
 private:
 	void Start();
 	void Update(FrameInfo& frameInfo);
@@ -44,15 +46,11 @@ private:
 	void LoadAssets();
 	void UnloadAssets();
 
-	static GameState currentGameState;
-	static GameSettings gameSettings;
-
 	Window window{ Core::GlobalVariables::initialWidth,Core::GlobalVariables::initialHeight };
 	RGUI::GUI gui{};
 
-	AudioManager& audioManager = AudioManager::GetInstance();
-	GameObjectMap& gameObjects = GameObjectMap::GetInstance();
-	Stats& stats = Stats::GetInstance();
+	static GameState currentGameState;
+	static GameSettings gameSettings;
 
 	std::unordered_map<std::string, Texture2D> textures;
 

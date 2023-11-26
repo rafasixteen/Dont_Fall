@@ -57,8 +57,8 @@ public:
 	int GetTime() const { return time; }
 	PlayerStats& GetPlayerStats() { return playerStats; }
 
-	void SaveStatsToFile(const std::string fileName);
-	PlayerStats LoadStatsFromFile(const std::string fileName);
+	void SaveStatsToFile();
+	PlayerStats LoadStatsFromFile();
 private:
 	Stats() {}
 	PlayerStats playerStats{};

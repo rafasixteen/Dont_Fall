@@ -55,26 +55,30 @@ int Stats::GetElapsedTime() const
 	return duration.count();
 }
 
-void Stats::SaveStatsToFile(const std::string fileName)
+void Stats::SaveStatsToFile()
 {
-	PlayerStats statsFromFile = LoadStatsFromFile(fileName);
+	const std::string filename = "stats.ini";
+
+	PlayerStats statsFromFile = LoadStatsFromFile();
 	statsFromFile += playerStats;
 
-	std::ofstream file(fileName);
+	std::ofstream file(filename);
 	if (file.is_open())
 	{
 		file << statsFromFile.Serialize();
 		file.close();
-		std::cout << "Stats saved to file: " << fileName << std::endl;
+		INFO("Stats saved to file: " << filename);
 	}
 	else
 	{
-		std::cerr << "Unable to open file: " << fileName << std::endl;
+		WARNING("Unable to open file: " << filename);
 	}
 }
 
-PlayerStats Stats::LoadStatsFromFile(const std::string filename)
+PlayerStats Stats::LoadStatsFromFile()
 {
+	const std::string filename = "stats.ini";
+
 	std::ifstream file(filename);
 	PlayerStats loadedStats{};
 
@@ -87,6 +91,11 @@ PlayerStats Stats::LoadStatsFromFile(const std::string filename)
 			ss >> loadedStats.time >> loadedStats.gamesPlayed >> loadedStats.died >> loadedStats.ammoCollected;
 			file.close();
 		}
+	}
+	else
+	{
+		WARNING("Unable to open file: " << filename);
+		return PlayerStats();
 	}
 
 	return loadedStats;

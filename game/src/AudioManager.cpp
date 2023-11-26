@@ -1,16 +1,19 @@
 #include "AudioManager.hpp"
 #include <raylib.h>
 #include <core/Utils.hpp>
+#include "Game.hpp"
 
 void AudioManager::LoadAudio(std::string name, std::string filepath)
 {
 	Sound sound = LoadSound(filepath.c_str());
+	SetSoundVolume(sound, Game::GetGameSettings().audioSettings.sfxVolume / 100.0f);
 	sounds.emplace(name, sound);
 }
 
 void AudioManager::LoadMusic(std::string name, std::string filepath)
 {
 	Music music = LoadMusicStream(filepath.c_str());
+	SetMusicVolume(music, Game::GetGameSettings().audioSettings.musicVolume / 100.0f);
 	PlayMusicStream(music);
 	musics.emplace(name, music);
 }
@@ -57,6 +60,30 @@ void AudioManager::ResumeMusic(std::string name)
 	ResumeMusicStream(GetMusic(name));
 }
 
+void AudioManager::SetVolumeSFX(int volume)
+{
+	float vol = volume / 100.0f;
+	for (auto& [name, sound] : sounds)
+	{
+		SetSoundVolume(sound, vol);
+	}
+}
+
+void AudioManager::SetVolumeMusic(int volume)
+{
+	float vol = volume / 100.0f;
+	for (auto& [name, music] : musics)
+	{
+		SetMusicVolume(music, vol);
+	}
+}
+
+AudioManager::AudioManager()
+{
+	InitAudioDevice();
+	SetMasterVolume(Game::GetGameSettings().audioSettings.masterVolume / 100.0f);
+}
+
 AudioManager::~AudioManager()
 {
 	for (auto& [name, sound] : sounds)
@@ -71,4 +98,6 @@ AudioManager::~AudioManager()
 
 	sounds.clear();
 	musics.clear();
+
+	CloseAudioDevice();
 }

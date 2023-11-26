@@ -49,17 +49,6 @@ namespace RGUI
 	{
 		rlImGuiBegin();
 
-		auto style = &ImGui::GetStyle();
-		auto colors = style->Colors;
-
-		ImVec4 purple = Utils::HexToRGBA("9757EFFF");
-		ImVec4 purpleHover = Utils::HexToRGBA("8338ECFF");
-		ImVec4 purpleActive = Utils::HexToRGBA("741FEAFF");
-
-		colors[ImGuiCol_Button] = purple;
-		colors[ImGuiCol_ButtonHovered] = purpleHover;
-		colors[ImGuiCol_ButtonActive] = purpleActive;
-
 		startMenu.Render();
 
 		ImGui::End();
@@ -192,7 +181,7 @@ namespace RGUI
 
 	void GUI::RenderStatistics()
 	{
-		auto playerStats = Stats::GetInstance().LoadStatsFromFile("stats.txt");
+		auto playerStats = Stats::GetInstance().LoadStatsFromFile();
 
 		rlImGuiBegin();
 		ImGui::ShowStatisticsMenu(playerStats);
@@ -247,6 +236,10 @@ namespace RGUI
 		ImGuiStyle* style = &ImGui::GetStyle();
 		ImVec4* colors = style->Colors;
 
+		ImVec4 purple = Utils::HexToRGBA("9757EFFF");
+		ImVec4 purpleHover = Utils::HexToRGBA("8338ECFF");
+		ImVec4 purpleActive = Utils::HexToRGBA("741FEAFF");
+
 		colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
 		colors[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.00f);
 
@@ -257,9 +250,12 @@ namespace RGUI
 		colors[ImGuiCol_Border] = ImVec4(0.43f, 0.43f, 0.50f, 0.50f);
 		colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
 
-		colors[ImGuiCol_FrameBg] = ImVec4(0.16f, 0.29f, 0.48f, 0.54f);
-		colors[ImGuiCol_FrameBgHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.40f);
-		colors[ImGuiCol_FrameBgActive] = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
+		//colors[ImGuiCol_FrameBg] = ImVec4(0.16f, 0.29f, 0.48f, 0.54f);
+		//colors[ImGuiCol_FrameBgHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.40f);
+		//colors[ImGuiCol_FrameBgActive] = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
+		colors[ImGuiCol_FrameBg] = purple;
+		colors[ImGuiCol_FrameBgHovered] = purpleHover;
+		colors[ImGuiCol_FrameBgActive] = purpleActive;
 
 		colors[ImGuiCol_TitleBg] = ImVec4(0.04f, 0.04f, 0.04f, 1.00f);
 		colors[ImGuiCol_TitleBgActive] = ImVec4(0.16f, 0.29f, 0.48f, 1.00f);
@@ -268,22 +264,34 @@ namespace RGUI
 		colors[ImGuiCol_MenuBarBg] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
 		colors[ImGuiCol_ScrollbarBg] = ImVec4(0.02f, 0.02f, 0.02f, 0.53f);
 
-		colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.31f, 0.31f, 0.31f, 1.00f);
-		colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.41f, 0.41f, 0.41f, 1.00f);
-		colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.51f, 0.51f, 0.51f, 1.00f);
+		//colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.31f, 0.31f, 0.31f, 1.00f);
+		//colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.41f, 0.41f, 0.41f, 1.00f);
+		//colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.51f, 0.51f, 0.51f, 1.00f);
+		colors[ImGuiCol_ScrollbarGrab] = purple;
+		colors[ImGuiCol_ScrollbarGrabHovered] = purpleHover;
+		colors[ImGuiCol_ScrollbarGrabActive] = purpleActive;
 
-		colors[ImGuiCol_CheckMark] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+		colors[ImGuiCol_CheckMark] = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+		//colors[ImGuiCol_CheckMark] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
 
-		colors[ImGuiCol_SliderGrab] = ImVec4(0.24f, 0.52f, 0.88f, 1.00f);
-		colors[ImGuiCol_SliderGrabActive] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+		//colors[ImGuiCol_SliderGrab] = ImVec4(0.24f, 0.52f, 0.88f, 1.00f);
+		//colors[ImGuiCol_SliderGrabActive] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+		colors[ImGuiCol_SliderGrab] = purple;
+		colors[ImGuiCol_SliderGrabActive] = purpleActive;
 
-		colors[ImGuiCol_Button] = ImVec4(0.26f, 0.59f, 0.98f, 0.40f);
-		colors[ImGuiCol_ButtonHovered] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
-		colors[ImGuiCol_ButtonActive] = ImVec4(0.06f, 0.53f, 0.98f, 1.00f);
+		//colors[ImGuiCol_Button] = ImVec4(0.26f, 0.59f, 0.98f, 0.40f);
+		//colors[ImGuiCol_ButtonHovered] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+		//colors[ImGuiCol_ButtonActive] = ImVec4(0.06f, 0.53f, 0.98f, 1.00f);
+		colors[ImGuiCol_Button] = purple;
+		colors[ImGuiCol_ButtonHovered] = purpleHover;
+		colors[ImGuiCol_ButtonActive] = purpleActive;
 
-		colors[ImGuiCol_Header] = ImVec4(0.26f, 0.59f, 0.98f, 0.31f);
-		colors[ImGuiCol_HeaderHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.80f);
-		colors[ImGuiCol_HeaderActive] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+		colors[ImGuiCol_Header] = purple;
+		colors[ImGuiCol_HeaderHovered] = purpleHover;
+		colors[ImGuiCol_HeaderActive] = purpleActive;
+		//colors[ImGuiCol_Header] = ImVec4(0.26f, 0.59f, 0.98f, 0.31f);
+		//colors[ImGuiCol_HeaderHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.80f);
+		//colors[ImGuiCol_HeaderActive] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
 
 		colors[ImGuiCol_Separator] = colors[ImGuiCol_Border];
 		colors[ImGuiCol_SeparatorHovered] = ImVec4(0.10f, 0.40f, 0.75f, 0.78f);

@@ -22,8 +22,11 @@ public:
 	void PlayMusic(std::string name);
 	void PauseMusic(std::string name);
 	void ResumeMusic(std::string name);
+
+	void SetVolumeSFX(int volume);
+	void SetVolumeMusic(int volume);
 private:
-	AudioManager() {}
+	AudioManager();
 	~AudioManager();
 
 	std::unordered_map<std::string, Sound> sounds;

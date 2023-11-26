@@ -10,15 +10,16 @@
 
 #include <raylib.h>
 
-GameState Game::currentGameState = GameState::Start;
 GameSettings Game::gameSettings;
+GameState Game::currentGameState = GameState::Start;
+AudioManager& audioManager = AudioManager::GetInstance();
+GameObjectMap& gameObjects = GameObjectMap::GetInstance();
+Stats& stats = Stats::GetInstance();
 
 Game::Game()
 {
+	LoadSettingsFromFile();
 	SetExitKey(KEY_NULL);
-	//SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));
-	InitAudioDevice();
-	SetMasterVolume(gameSettings.audioSettings.masterVolume / 100.0f);
 
 	LoadAssets();
 	LoadGameObjects();
@@ -26,7 +27,6 @@ Game::Game()
 
 Game::~Game()
 {
-	CloseAudioDevice();
 	UnloadAssets();
 }
 
@@ -171,7 +171,6 @@ void Game::LoadAssets()
 	Texture2D sawTexture = LoadTexture("Assets/Sprites/Saw.png");
 	textures.emplace("Saw", std::move(sawTexture));
 
-	auto& audioManager = AudioManager::GetInstance();
 	audioManager.LoadAudio("Shoot", "Assets/Audio/Shoot.wav");
 	audioManager.LoadAudio("CantShoot", "Assets/Audio/CantShoot.wav");
 	audioManager.LoadAudio("Died", "Assets/Audio/Died.wav");
@@ -179,7 +178,6 @@ void Game::LoadAssets()
 	audioManager.LoadAudio("Spawn", "Assets/Audio/Spawn.wav");
 
 	audioManager.LoadMusic("Gameplay", "Assets/Music/Gameplay.mp3");
-	//audioManager.LoadMusic("Menu", "Assets/Music/Cipher2.mp3");
 	audioManager.LoadMusic("Menu", "Assets/Music/Space-Jazz.mp3");
 }
 
@@ -215,7 +213,7 @@ void Game::ResetGame()
 
 	auto& playerStats = Stats::GetInstance().GetPlayerStats();
 	playerStats.time = Stats::GetInstance().GetTime();
-	Stats::GetInstance().SaveStatsToFile("stats.txt");
+	Stats::GetInstance().SaveStatsToFile();
 }
 
 void Game::StartGame()
@@ -226,4 +224,41 @@ void Game::StartGame()
 	Stats::GetInstance().StartTimer();
 	AudioManager::GetInstance().Play("Spawn");
 	SetGameState(GameState::Gameplay);
+}
+
+void Game::SaveSettingsToFile()
+{
+	std::ofstream file("settings.ini");
+
+	if (file.is_open())
+	{
+		file << gameSettings.Serialize();
+		file.close();
+		INFO("Settings saved to file: " << "settings.ini");
+	}
+	else
+	{
+		WARNING("Unable to open file: " << "settings.ini");
+	}
+}
+
+void Game::LoadSettingsFromFile()
+{
+	std::ifstream file("settings.ini");
+
+	if (file.is_open())
+	{
+		std::string data;
+		if (std::getline(file, data))
+		{
+			std::istringstream ss(data);
+			gameSettings.Deserialize(data);
+			INFO("Settings Loaded");
+			file.close();
+		}
+	}
+	else
+	{
+		WARNING("Unable to open file: " << "settings.ini");
+	}
 }

@@ -15,7 +15,7 @@ Window::Window(const int width, const int height)
 
 	rlImGuiSetup(true);
 	RGUI::GUI::SetCustomStyle();
-	RGUI::GUI::SetCustomColors();
+	//RGUI::GUI::SetCustomColors();
 
 	Core::GlobalVariables::UpdateGlobals();
 }
