@@ -8,14 +8,17 @@ Window::Window(const int width, const int height)
 {
 	InitWindow(width, height, windowName);
 
-	//SetWindowIcon();
+	Image icon = LoadImage("Assets/Sprites/Logo.png");
+	SetWindowIcon(icon);
+	UnloadImage(icon);
+
 	SetWindowMinSize(Core::GlobalVariables::minimunWindowWidth, Core::GlobalVariables::minimunWindowHeight);
 
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
 
 	rlImGuiSetup(true);
 	RGUI::GUI::SetCustomStyle();
-	//RGUI::GUI::SetCustomColors();
+	RGUI::GUI::SetCustomColors();
 
 	Core::GlobalVariables::UpdateGlobals();
 }
