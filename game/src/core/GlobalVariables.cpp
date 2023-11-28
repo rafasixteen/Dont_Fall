@@ -23,8 +23,5 @@ namespace Core
 
 		ratio.x = static_cast<float>(currentWidth) / initialWidth;
 		ratio.y = static_cast<float>(currentHeight) / initialHeight;
-
-		INFO(ratio.x);
-		INFO(ratio.y);
 	}
 }

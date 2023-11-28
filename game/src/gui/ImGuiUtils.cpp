@@ -6,7 +6,7 @@ namespace ImGui
 {
 	void ShowStatisticsMenu(PlayerStats playerStats)
 	{
-		ImGui::Begin("Player Statistics", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground);
+		ImGui::Begin("Player Statistics", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
 
 		ImVec2 size = { 400 ,400 };
 		ImGui::SetWindowSize("Player Statistics", size);
@@ -27,7 +27,7 @@ namespace ImGui
 	{
 		Vector2 ratio = Core::GlobalVariables::ratio;
 
-		ImGui::Begin("Audio Settings", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
+		ImGui::Begin("Audio Settings", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground);
 
 		ImVec2 size = { 400 * ratio.x,200 * ratio.y };
 		ImVec2 position = { 340 * ratio.x,0 };
@@ -45,7 +45,7 @@ namespace ImGui
 	{
 		Vector2 ratio = Core::GlobalVariables::ratio;
 
-		ImGui::Begin("Gameplay Settings", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
+		ImGui::Begin("Gameplay Settings", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground);
 
 		ImVec2 size = { 400 * ratio.x,200 * ratio.y };
 		ImVec2 position = { 340 * ratio.x,0 };

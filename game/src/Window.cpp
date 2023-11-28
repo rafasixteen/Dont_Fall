@@ -14,8 +14,6 @@ Window::Window(const int width, const int height)
 
 	SetWindowMinSize(Core::GlobalVariables::minimunWindowWidth, Core::GlobalVariables::minimunWindowHeight);
 
-	SetWindowState(FLAG_WINDOW_RESIZABLE);
-
 	rlImGuiSetup(true);
 	RGUI::GUI::SetCustomStyle();
 	RGUI::GUI::SetCustomColors();

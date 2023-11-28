@@ -39,9 +39,9 @@ void Game::Run()
 		deltaTime = GetFrameTime();
 		fps = GetFPS();
 
-		if (IsWindowResized())
+		if (IsKeyReleased(KEY_F5))
 		{
-			Core::GlobalVariables::UpdateGlobals();
+			ToggleFullscreen();
 		}
 
 		FrameInfo frameInfo{ deltaTime, gameObjects,Core::GlobalVariables::currentWidth,Core::GlobalVariables::currentHeight };
@@ -98,15 +98,19 @@ void Game::Update(FrameInfo& frameInfo)
 		gui.UpdateGameplay();
 		break;
 	case GameState::GameOver:
+		audioManager.PlayMusic("Menu");
 		gui.UpdateGameOver();
 		break;
 	case GameState::Paused:
+		audioManager.PlayMusic("Menu");
 		gui.UpdatePaused();
 		break;
 	case GameState::Settings:
+		audioManager.PlayMusic("Menu");
 		gui.UpdateSettings();
 		break;
 	case GameState::Statistics:
+		audioManager.PlayMusic("Menu");
 		gui.UpdateStatistics();
 		break;
 	default:
@@ -197,8 +201,16 @@ void Game::ResetGame()
 	Stats::GetInstance().ResumeTimer();
 	Stats::GetInstance().StopTimer();
 
+	GameObjectMap::GetInstance().FindByName("Gun").As<Gun>()->ammoCount = 5;
+
+	auto& playerStats = Stats::GetInstance().GetPlayerStats();
+	playerStats.time = Stats::GetInstance().GetTime();
+	Stats::GetInstance().SaveStatsToFile();
+}
+
+void Game::StartGame()
+{
 	auto& map = GameObjectMap::GetInstance();
-	map.FindByName("Gun").As<Gun>()->ammoCount = 5;
 	map.FindByName("Player").As<Player>()->Reset();
 
 	for (auto& [name, ammoObject] : map.GetMap())
@@ -211,13 +223,6 @@ void Game::ResetGame()
 		if (obstacleObject->GetTag() == "Obstacle") obstacleObject->As<Obstacle>()->GenerateRandomPosition();
 	}
 
-	auto& playerStats = Stats::GetInstance().GetPlayerStats();
-	playerStats.time = Stats::GetInstance().GetTime();
-	Stats::GetInstance().SaveStatsToFile();
-}
-
-void Game::StartGame()
-{
 	auto& playerStats = Stats::GetInstance().GetPlayerStats();
 	playerStats.gamesPlayed++;
 
@@ -260,5 +265,26 @@ void Game::LoadSettingsFromFile()
 	else
 	{
 		WARNING("Unable to open file: " << "settings.ini");
+	}
+}
+
+void Game::ToggleFullscreen()
+{
+	fullscreen = !fullscreen;
+	if (fullscreen)
+	{
+		auto monitor = GetCurrentMonitor();
+		SetWindowPosition(0, 0);
+		SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
+		Core::GlobalVariables::UpdateGlobals();
+	}
+	else
+	{
+		auto monitor = GetCurrentMonitor();
+		Vector2 initialSize = { Core::GlobalVariables::initialWidth,Core::GlobalVariables::initialHeight };
+
+		SetWindowPosition(GetMonitorWidth(monitor) / 2.0f - initialSize.x / 2.0f, GetMonitorHeight(monitor) / 2.0f - initialSize.y / 2.0f);
+		SetWindowSize(initialSize.x, initialSize.y);
+		Core::GlobalVariables::UpdateGlobals();
 	}
 }

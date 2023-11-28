@@ -168,7 +168,6 @@ namespace RGUI
 	{
 		rlImGuiBegin();
 		ImGui::ShowSettingsMenu(Game::GetGameSettings());
-		//ImGui::ShowDemoWindow();
 		rlImGuiEnd();
 	}
 

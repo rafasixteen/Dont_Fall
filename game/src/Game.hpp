@@ -46,6 +46,8 @@ private:
 	void LoadAssets();
 	void UnloadAssets();
 
+	void ToggleFullscreen();
+
 	Window window{ Core::GlobalVariables::initialWidth,Core::GlobalVariables::initialHeight };
 	RGUI::GUI gui{};
 
@@ -56,4 +58,5 @@ private:
 
 	float deltaTime = 0.0f;
 	int fps = 0;;
+	bool fullscreen = false;
 };
