@@ -22,10 +22,6 @@ public:
 	virtual void Start() = 0;
 	virtual void Update(FrameInfo& frameInfo) = 0;
 
-	/*	void Draw();
-		void Start();
-		void Update(FrameInfo& frameInfo);*/
-
 	std::string GetName() const { return name; }
 	void SeName(std::string name) { this->name = name; }
 	std::string GetTag() const { return tag; }

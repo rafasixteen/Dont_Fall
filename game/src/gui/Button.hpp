@@ -12,8 +12,8 @@ namespace RGUI
 	class Button : public GUIElement
 	{
 	public:
-		Button(std::string name, ImVec2 size);
-		~Button();
+		Button(std::string name, ImVec2 size) : name{ name }, size{ size } {}
+		~Button() {}
 
 		void Render() override;
 		bool IsClicked() const { return isClicked; }

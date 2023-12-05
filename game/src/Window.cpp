@@ -13,11 +13,6 @@ Window::Window(const int width, const int height)
 	UnloadImage(icon);
 
 	SetWindowMinSize(Core::GlobalVariables::minimunWindowWidth, Core::GlobalVariables::minimunWindowHeight);
-
-	rlImGuiSetup(true);
-	RGUI::GUI::SetCustomStyle();
-	RGUI::GUI::SetCustomColors();
-
 	Core::GlobalVariables::UpdateGlobals();
 }
 

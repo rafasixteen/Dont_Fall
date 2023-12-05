@@ -12,7 +12,9 @@ namespace RGUI
 {
 	GUI::GUI()
 	{
-		// Initialization Done In Window.cpp
+		rlImGuiSetup(true);
+		RGUI::GUI::SetCustomStyle();
+		RGUI::GUI::SetCustomColors();
 	}
 
 	GUI::~GUI()
@@ -51,8 +53,6 @@ namespace RGUI
 
 		startMenu.Render();
 
-		ImGui::End();
-
 		rlImGuiEnd();
 	}
 
@@ -77,11 +77,9 @@ namespace RGUI
 
 		gameOverMenu.Render();
 
-		ImGui::End();
-
 		rlImGuiEnd();
 
-		auto time = Stats::GetInstance().GetTime();
+		auto time = stats.GetTime();
 		DrawCurrentTimer(time);
 	}
 
@@ -97,7 +95,7 @@ namespace RGUI
 
 		if (resumeButton.IsClicked())
 		{
-			Stats::GetInstance().ResumeTimer();
+			stats.ResumeTimer();
 			Game::SetGameState(GameState::Gameplay);
 		}
 
@@ -120,8 +118,6 @@ namespace RGUI
 		rlImGuiBegin();
 
 		pausedMenu.Render();
-
-		ImGui::End();
 
 		rlImGuiEnd();
 
@@ -180,7 +176,7 @@ namespace RGUI
 
 	void GUI::RenderStatistics()
 	{
-		auto playerStats = Stats::GetInstance().LoadStatsFromFile();
+		auto playerStats = stats.LoadStatsFromFile();
 
 		rlImGuiBegin();
 		ImGui::ShowStatisticsMenu(playerStats);

@@ -46,8 +46,7 @@ void Player::Update(FrameInfo& frameInfo)
 	if (transform.position.x < 0) transform.position.x = frameInfo.currentWidth;
 	if (transform.position.x > frameInfo.currentWidth) transform.position.x = 0;
 
-	if (transform.position.y < 0) transform.position.y = frameInfo.currentHeight;
-	if (transform.position.y > frameInfo.currentHeight) transform.position.y = 0;
+	if (transform.position.y > frameInfo.currentHeight) Die();
 	// Bounds //
 }
 

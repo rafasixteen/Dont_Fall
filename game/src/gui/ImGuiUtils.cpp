@@ -4,21 +4,30 @@
 
 namespace ImGui
 {
+	enum ActiveSettingsSection
+	{
+		Gameplay,
+		Audio
+	};
+
 	void ShowStatisticsMenu(PlayerStats playerStats)
 	{
+		Vector2 ratio = Core::GlobalVariables::ratio;
+		Vector2 screenCenter = Core::GlobalVariables::screenCenter;
+
 		ImGui::Begin("Player Statistics", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
 
-		ImVec2 size = { 400 ,400 };
+		ImVec2 size = { 300 * ratio.x ,110 * ratio.y };
+		ImVec2 position = { screenCenter.x - size.x / 2, screenCenter.y - size.y / 2 };
 		ImGui::SetWindowSize("Player Statistics", size);
-		ImGui::SetWindowPos("Player Statistics", { Core::GlobalVariables::screenCenter.x - size.x / 2,Core::GlobalVariables::screenCenter.y - size.y / 2 });
+		ImGui::SetWindowPos("Player Statistics", position);
 
-		std::string formmatedTime = "Time: ";
-		formmatedTime += Stats::FormatTime(playerStats.time);
+		std::string timeText = Stats::FormatTime(playerStats.time);
 
-		ImGui::Text(formmatedTime.c_str());
-		ImGui::Text("Games Played: %d", playerStats.gamesPlayed);
-		ImGui::Text("Times Died: %d", playerStats.died);
-		ImGui::Text("Ammo Collected: %d", playerStats.ammoCollected);
+		ImGui::Text("Time Record: "); ImGui::SameLine(); ImGui::SetCursorPosX(ImGui::GetWindowWidth() - 80); ImGui::Text(timeText.c_str());
+		ImGui::Text("Games Played: "); ImGui::SameLine(); ImGui::SetCursorPosX(ImGui::GetWindowWidth() - 80); ImGui::Text("%d", playerStats.gamesPlayed);
+		ImGui::Text("Times Died: "); ImGui::SameLine(); ImGui::SetCursorPosX(ImGui::GetWindowWidth() - 80); ImGui::Text("%d", playerStats.died);
+		ImGui::Text("Ammo Collected: "); ImGui::SameLine(); ImGui::SetCursorPosX(ImGui::GetWindowWidth() - 80); ImGui::Text("%d", playerStats.ammoCollected);
 
 		ImGui::End();
 	}
@@ -59,12 +68,6 @@ namespace ImGui
 		ImGui::End();
 	}
 
-	enum ActiveSettingsSection
-	{
-		Gameplay,
-		Audio,
-	};
-
 	void ShowSettingsMenu(GameSettings& gameSettings)
 	{
 		static auto previousGameSettings = gameSettings;
@@ -104,9 +107,7 @@ namespace ImGui
 
 				Game::SaveSettingsToFile();
 			}
-
 		}
-
 		ImGui::End();
 	}
 }
