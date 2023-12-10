@@ -13,9 +13,9 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
 - [Gameplay](#gameplay)
 - [Controls](#controls)
 - [Development](#development)
+  - [Architecture](#architecture)
   - [Built With](#built-with)
   - [Contributing](#contributing)
-  - [Architecture](#architecture)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
@@ -42,18 +42,18 @@ Explain the core mechanics and objectives of your game.
 ## Development
 Provide information for developers who might want to contribute or understand how the game is built.
 
-### Built With
-- List the technologies, frameworks, or engines used in the project.
-
-### Contributing
-Explain how others can contribute to the project.
-
 ### Architecture
 Don't Fall follows a component-based game object system, organizing entities into modular components for flexibility and maintainability. The core architectural principles include:
 
 - **Component-based Design**: Entities are composed of modular components, allowing for easy assembly and reusability.
 - **GameObject System**: The game logic is structured around a robust game object system, facilitating efficient entity management.
 - **Scalable and Extensible**: The architecture is designed to be scalable and extensible, making it straightforward to add new features and components.
+
+### Built With
+- List the technologies, frameworks, or engines used in the project.
+
+### Contributing
+Explain how others can contribute to the project.
 
 ## License
 Specify the license under which your game is distributed.
