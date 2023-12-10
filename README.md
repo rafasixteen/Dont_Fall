@@ -48,8 +48,6 @@ Don't Fall follows a component-based game object system, organizing entities int
 - **Scalable and Extensible**: The architecture is designed to be scalable and extensible, making it straightforward to add new features and components.
 
 ### Built With
-We've crafted Don't Fall using a mix of tools and tech that make game development a breeze:
-
 - **Raylib Framework**
 
 - **Premake Build System**
