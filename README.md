@@ -1,7 +1,9 @@
 # Don't Fall
 
 ## Overview
-Don't Fall is an engaging and dynamic game that challenges players to control the character using the powerful recoil of their shotgun. The primary objective is to navigate through the game environment, skillfully avoiding randomly spawning obstacles. The twist lies in strategically collecting ammo to sustain airborne momentum and prevent the inevitable descent, adding an extra layer of complexity and excitement to the gameplay.
+Don't Fall is a game that challenges players to control the character using the powerful recoil of their shotgun.  
+The main objective is to navigate through the game environment, avoiding randomly spawned obstacles.  
+The twist lies in strategically collecting ammo to maintain airborne momentum and prevent the inevitable descent, that results in losing the game.
 
 ## Table of Contents
 - [Features](#features)
