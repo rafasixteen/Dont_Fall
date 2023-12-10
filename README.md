@@ -40,8 +40,6 @@ Explain the core mechanics and objectives of your game.
 - **Esc**: Pause/Menu
 
 ## Development
-Provide information for developers who might want to contribute or understand how the game is built.
-
 ### Architecture
 Don't Fall follows a component-based game object system, organizing entities into modular components for flexibility and maintainability. The core architectural principles include:
 
