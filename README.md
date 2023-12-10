@@ -31,7 +31,9 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
 - **Persistent Stats Storage**: All statistics are automatically saved, creating a persistent record of your achievements.
 
 ## Getting Started
-Just download the project files and run the Dont_Fall.exe
+1. **Download the Project Files**: Obtain the game's source files from the repository.
+
+2. **Run the Game**: Execute the `Dont_Fall.exe` file to dive into the world of challenges and shotgun-powered navigation.
 
 ## Gameplay
 Explain the core mechanics and objectives of your game.
