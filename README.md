@@ -83,17 +83,32 @@ Don't Fall is an open project, and I welcome any type of feedback! Here's how yo
 - **Feedback**: Whether it's a compliment, a suggestion, or whatever, go for it.
 
 ## Screenshoots
-![Screenshot 1](Screenshots/MainMenu.png)
-*Caption for Screenshot 1*
+<p align="center">
+  <img src="Screenshots/MainMenu.png" alt="Screenshot 1">
+  <br>
+  <em>Caption for Screenshot 1</em>
+</p>
 
-![Screenshot 2](Screenshots/Gameplay.png)
-*Caption for Screenshot 2*
+<p align="center">
+  <img src="Screenshots/Gameplay.png" alt="Screenshot 2">
+  <br>
+  <em>Caption for Screenshot 2</em>
+</p>
 
-![Screenshot 3](Screenshots/GameOverMenu.png)
-*Caption for Screenshot 2*
+<p align="center">
+  <img src="Screenshots/GameOverMenu.png" alt="Screenshot 3">
+  <br>
+  <em>Caption for Screenshot 3</em>
+</p>
 
-![Screenshot 4](Screenshots/StatsMenu.png)
-*Caption for Screenshot 2*
+<p align="center">
+  <img src="Screenshots/StatsMenu.png" alt="Screenshot 4">
+  <br>
+  <em>Caption for Screenshot 4</em>
+</p>
 
-![Screenshot 5](Screenshots/SettingsMenu.png)
-*Caption for Screenshot 2*
+<p align="center">
+  <img src="Screenshots/SettingsMenu.png" alt="Screenshot 5">
+  <br>
+  <em>Caption for Screenshot 5</em>
+</p>
