@@ -18,7 +18,25 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
   - [Contributing](#contributing)
 
 ## Features
-- List key features and functionalities of your game.
+- **Recoil-Powered Movement**: Control your character using the powerful recoil of a shotgun for a dynamic and engaging gameplay experience.
+
+- **Randomized Obstacles**: Navigate through challenging levels filled with randomly spawned obstacles, keeping each playthrough fresh and unpredictable.
+
+- **Ammo Collection System**: Collect ammo strategically to maintain airborne momentum and prevent falling, adding a strategic element to the game.
+
+- **Immersive Environments**: Enjoy visually stunning and immersive game environments that enhance the overall gaming experience.
+
+- **Responsive Controls**: Experience smooth and responsive controls for precise movement and shooting actions.
+
+- **Dynamic Soundtrack**: Immerse yourself in the game with a dynamic soundtrack that adapts to the intensity of the gameplay.
+
+- **Toggleable Fullscreen Mode**: Switch between fullscreen and windowed modes with the press of a button for a customized gaming experience.
+
+- **Pause and Menu Functionality**: Easily pause the game and access the menu with a convenient and intuitive control.
+
+- **Customizable Settings**: Tailor the game to your preferences with customizable settings, including audio volumes and gameplay options.
+
+- **Cross-Platform Compatibility**: Enjoy the game on different platforms, ensuring accessibility for a wider audience.
 
 ## Getting Started
 Provide instructions on how to get a copy of the project up and running on a local machine.
