@@ -8,8 +8,6 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
 ## Table of Contents
 - [Features](#features)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
 - [Gameplay](#gameplay)
 - [Controls](#controls)
 - [Development](#development)
@@ -33,13 +31,7 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
 - **Persistent Stats Storage**: All statistics are automatically saved, creating a persistent record of your achievements.
 
 ## Getting Started
-Provide instructions on how to get a copy of the project up and running on a local machine.
-
-### Prerequisites
-- List any software or dependencies that need to be installed.
-
-### Installation
-Step-by-step instructions on how to install and run the game.
+Just download the project files and run the Dont_Fall.exe
 
 ## Gameplay
 Explain the core mechanics and objectives of your game.
