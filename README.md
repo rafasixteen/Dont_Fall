@@ -9,7 +9,9 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Gameplay](#gameplay)
-- [Controls](#controls)
+  - [Core Mechanics](#core-mechanics)
+  - [Objectives](#objectives)
+  - [Controls](#controls)
 - [Development](#development)
   - [Architecture](#architecture)
   - [Built With](#built-with)
@@ -36,9 +38,17 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
 2. **Run the Game**: Execute the `Dont_Fall.exe` file to play the game.
 
 ## Gameplay
-Explain the core mechanics and objectives of your game.
+### Core Mechanics:
+- **Recoil Navigation**: Utilize the shotgun's recoil to move your character.
+- **Random Obstacles**: Maneuver through obstacles that spawn unpredictably.
+- **Ammo Collection**: Collect ammo strategically to maintain airborne momentum.
 
-## Controls
+### Objectives:
+- **Stay Airborne**: Prevent the inevitable descent by collecting ammo.
+- **Avoid Obstacles**: Navigate skillfully to dodge obstacles and stay alive.
+- **Beat Your Record**: Challenge yourself to achieve the longest airborne time.
+
+### Controls
 - **Left Mouse Button**: Shoot
 - **F5**: Toggle Fullscreen
 - **Esc**: Pause/Menu
