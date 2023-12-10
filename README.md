@@ -48,7 +48,13 @@ Don't Fall follows a component-based game object system, organizing entities int
 - **Scalable and Extensible**: The architecture is designed to be scalable and extensible, making it straightforward to add new features and components.
 
 ### Built With
-- List the technologies, frameworks, or engines used in the project.
+We've crafted Don't Fall using a mix of tools and tech that make game development a breeze:
+
+- **Raylib Framework**: The go-to for handling graphics and interactions, making things look and feel just right.
+
+- **Premake Build System**: Keeps things tidy behind the scenes, making sure our libraries are in order without breaking a sweat.
+
+- **Visual Studio 2022 IDE**: Where the magic happens. Coding, debugging, and everything in between.
 
 ### Contributing
 Explain how others can contribute to the project.
