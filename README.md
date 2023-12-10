@@ -86,5 +86,14 @@ Don't Fall is an open project, and I welcome any type of feedback! Here's how yo
 ![Screenshot 1](Screenshots/MainMenu.png)
 *Caption for Screenshot 1*
 
-![Screenshot 2](path/to/screenshot2.png)
+![Screenshot 2](Screenshots/Gameplay.png)
+*Caption for Screenshot 2*
+
+![Screenshot 3](Screenshots/GameOverMenu.png)
+*Caption for Screenshot 2*
+
+![Screenshot 4](Screenshots/StatsMenu.png)
+*Caption for Screenshot 2*
+
+![Screenshot 5](Screenshots/SettingsMenu.png)
 *Caption for Screenshot 2*
