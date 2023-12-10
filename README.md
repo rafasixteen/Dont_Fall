@@ -18,7 +18,7 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
   - [Contributing](#contributing)
 
 ## Features
-- **Recoil-Powered Movement**: Control your character using the powerful recoil of a shotgun.
+- **Recoil-Powered Movement**: Control your character using the recoil of a shotgun.
 
 - **Randomized Obstacles**: Navigate through the game environment filled with randomly spawned obstacles.
 
