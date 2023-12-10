@@ -16,6 +16,7 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
   - [Architecture](#architecture)
   - [Built With](#built-with)
   - [Contributing](#contributing)
+- [Screenshoots](#screenshoots)
 
 ## Features
 - **Recoil-Powered Movement**: Control your character using the recoil of a shotgun.
@@ -80,3 +81,12 @@ Don't Fall is an open project, and I welcome any type of feedback! Here's how yo
 - **Optimizations**: Know a trick or two to make things faster? I wanna hear it.
 
 - **Feedback**: Whether it's a compliment, a suggestion, or whatever, go for it.
+
+## Screenshoots
+Here are some screenshots from the game:
+
+![Screenshot 1](path/to/screenshot1.png)
+*Caption for Screenshot 1*
+
+![Screenshot 2](path/to/screenshot2.png)
+*Caption for Screenshot 2*
