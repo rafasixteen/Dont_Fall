@@ -18,25 +18,19 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
   - [Contributing](#contributing)
 
 ## Features
-- **Recoil-Powered Movement**: Control your character using the powerful recoil of a shotgun for a dynamic and engaging gameplay experience.
+- **Recoil-Powered Movement**: Control your character using the powerful recoil of a shotgun.
 
-- **Randomized Obstacles**: Navigate through challenging levels filled with randomly spawned obstacles, keeping each playthrough fresh and unpredictable.
+- **Randomized Obstacles**: Navigate through the game environment filled with randomly spawned obstacles.
 
-- **Ammo Collection System**: Collect ammo strategically to maintain airborne momentum and prevent falling, adding a strategic element to the game.
-
-- **Immersive Environments**: Enjoy visually stunning and immersive game environments that enhance the overall gaming experience.
-
-- **Responsive Controls**: Experience smooth and responsive controls for precise movement and shooting actions.
-
-- **Dynamic Soundtrack**: Immerse yourself in the game with a dynamic soundtrack that adapts to the intensity of the gameplay.
-
-- **Toggleable Fullscreen Mode**: Switch between fullscreen and windowed modes with the press of a button for a customized gaming experience.
+- **Ammo Collection System**: Collect ammo strategically to maintain airborne momentum and prevent falling.
 
 - **Pause and Menu Functionality**: Easily pause the game and access the menu with a convenient and intuitive control.
 
-- **Customizable Settings**: Tailor the game to your preferences with customizable settings, including audio volumes and gameplay options.
+- **Customizable Settings**: Customizable settings, including audio volumes and gameplay options.
 
-- **Cross-Platform Compatibility**: Enjoy the game on different platforms, ensuring accessibility for a wider audience.
+- **Player Statistics System**: Track your progress with a simple player statistics system.
+
+- **Persistent Stats Storage**: All statistics are automatically saved, creating a persistent record of your achievements.
 
 ## Getting Started
 Provide instructions on how to get a copy of the project up and running on a local machine.
