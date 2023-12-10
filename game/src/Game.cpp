@@ -33,7 +33,7 @@ Game::~Game()
 void Game::Run()
 {
 	Start();
-
+	
 	while (!WindowShouldClose())
 	{
 		deltaTime = GetFrameTime();
