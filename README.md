@@ -83,7 +83,7 @@ Don't Fall is an open project, and I welcome any type of feedback! Here's how yo
 - **Feedback**: Whether it's a compliment, a suggestion, or whatever, go for it.
 
 ## Screenshoots
-![Screenshot 1](Screenshoots/MainMenu.png)
+![Screenshot 1](Screenshots/MainMenu.png)
 *Caption for Screenshot 1*
 
 ![Screenshot 2](path/to/screenshot2.png)
