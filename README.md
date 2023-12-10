@@ -16,8 +16,6 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
   - [Architecture](#architecture)
   - [Built With](#built-with)
   - [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ## Features
 - List key features and functionalities of your game.
@@ -66,10 +64,3 @@ Don't Fall is an open project, and I welcome any type of feedback! Here's how yo
 - **Optimizations**: Know a trick or two to make things faster? I wanna hear it.
 
 - **Feedback**: Whether it's a compliment, a suggestion, or whatever, go for it.
-
-
-## License
-Specify the license under which your game is distributed.
-
-## Acknowledgments
-Show appreciation for any third-party assets, libraries, or inspiration sources.
