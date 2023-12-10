@@ -49,7 +49,6 @@ Provide information for developers who might want to contribute or understand ho
 Explain how others can contribute to the project.
 
 ### Architecture
-
 Don't Fall follows a component-based game object system, organizing entities into modular components for flexibility and maintainability. The core architectural principles include:
 
 - **Component-based Design**: Entities are composed of modular components, allowing for easy assembly and reusability.
