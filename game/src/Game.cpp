@@ -52,7 +52,11 @@ void Game::Run()
 		{
 			SetCursorVisibility(true);
 		}
-		KeepCursorInsideWindow();
+
+		if (currentGameState == GameState::Gameplay)
+		{
+			KeepCursorInsideWindow();
+		}
 
 		FrameInfo frameInfo{ deltaTime, gameObjects,Core::GlobalVariables::currentWidth,Core::GlobalVariables::currentHeight };
 
