@@ -50,11 +50,11 @@ Don't Fall follows a component-based game object system, organizing entities int
 ### Built With
 We've crafted Don't Fall using a mix of tools and tech that make game development a breeze:
 
-- **Raylib Framework**: The go-to for handling graphics and interactions, making things look and feel just right.
+- **Raylib Framework**
 
-- **Premake Build System**: Keeps things tidy behind the scenes, making sure our libraries are in order without breaking a sweat.
+- **Premake Build System**
 
-- **Visual Studio 2022 IDE**: Where the magic happens. Coding, debugging, and everything in between.
+- **Visual Studio 2022 IDE**
 
 ### Contributing
 Explain how others can contribute to the project.
