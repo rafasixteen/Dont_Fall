@@ -64,6 +64,7 @@ namespace ImGui
 		ImGui::Checkbox(" Show Timer While Playing", &gameSettings.gameplaySettings.showTimerWhilePlaying);
 		ImGui::Checkbox(" Show FPS", &gameSettings.gameplaySettings.showFPS);
 		ImGui::Checkbox(" Show Hitboxes", &gameSettings.gameplaySettings.showHitboxes);
+		ImGui::Checkbox(" Show Cursor", &gameSettings.gameplaySettings.showCursor);
 
 		ImGui::End();
 	}

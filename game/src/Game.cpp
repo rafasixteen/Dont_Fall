@@ -33,7 +33,7 @@ Game::~Game()
 void Game::Run()
 {
 	Start();
-	
+
 	while (!WindowShouldClose())
 	{
 		deltaTime = GetFrameTime();
@@ -43,6 +43,16 @@ void Game::Run()
 		{
 			ToggleFullscreen();
 		}
+
+		if (currentGameState == GameState::Gameplay && !gameSettings.gameplaySettings.showCursor)
+		{
+			SetCursorVisibility(false);
+		}
+		else
+		{
+			SetCursorVisibility(true);
+		}
+		KeepCursorInsideWindow();
 
 		FrameInfo frameInfo{ deltaTime, gameObjects,Core::GlobalVariables::currentWidth,Core::GlobalVariables::currentHeight };
 
@@ -287,4 +297,25 @@ void Game::ToggleFullscreen()
 		SetWindowSize(initialSize.x, initialSize.y);
 		Core::GlobalVariables::UpdateGlobals();
 	}
+}
+
+void Game::SetCursorVisibility(bool visible)
+{
+	if (visible)
+	{
+		ShowCursor();
+	}
+	else
+	{
+		HideCursor();
+	}
+}
+
+void Game::KeepCursorInsideWindow()
+{
+	Vector2 mousePosition = GetMousePosition();
+	mousePosition.x = Clamp(mousePosition.x, 0, Core::GlobalVariables::currentWidth);
+	mousePosition.y = Clamp(mousePosition.y, 0, Core::GlobalVariables::currentHeight);
+	SetMousePosition(static_cast<int>(mousePosition.x), static_cast<int>(mousePosition.y));
+
 }

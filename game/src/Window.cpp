@@ -1,8 +1,6 @@
 #include "Window.hpp"
 #include "raylib.h"
-#include <rlImGui.h>
 #include "core/GlobalVariables.hpp"
-#include "gui/GUI.hpp"
 
 Window::Window(const int width, const int height)
 {

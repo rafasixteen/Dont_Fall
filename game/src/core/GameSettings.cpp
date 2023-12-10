@@ -24,5 +24,6 @@ void GameSettings::DefaultGameplaySettings(GameplaySettings& gameplaySettings)
 	gameplaySettings.showTimerWhilePlaying = true;
 	gameplaySettings.showFPS = true;
 	gameplaySettings.showHitboxes = false;
+	gameplaySettings.showCursor = true;
 }
 

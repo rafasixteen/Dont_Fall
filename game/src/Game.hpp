@@ -47,6 +47,8 @@ private:
 	void UnloadAssets();
 
 	void ToggleFullscreen();
+	void SetCursorVisibility(bool visible);
+	void KeepCursorInsideWindow();
 
 	Window window{ Core::GlobalVariables::initialWidth,Core::GlobalVariables::initialHeight };
 	RGUI::GUI gui{};

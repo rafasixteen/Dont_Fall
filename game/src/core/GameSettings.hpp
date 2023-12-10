@@ -16,6 +16,7 @@ struct GameSettings
 		bool showTimerWhilePlaying;
 		bool showFPS;
 		bool showHitboxes;
+		bool showCursor;
 	};
 
 	AudioSettings audioSettings;
@@ -37,7 +38,8 @@ struct GameSettings
 
 			<< gameplaySettings.showTimerWhilePlaying << " "
 			<< gameplaySettings.showFPS << " "
-			<< gameplaySettings.showHitboxes << "\n";
+			<< gameplaySettings.showHitboxes << ""
+			<< gameplaySettings.showCursor << "\n";
 
 		return ss.str();
 	}
@@ -52,7 +54,8 @@ struct GameSettings
 
 			>> gameplaySettings.showTimerWhilePlaying
 			>> gameplaySettings.showFPS
-			>> gameplaySettings.showHitboxes;
+			>> gameplaySettings.showHitboxes
+			>> gameplaySettings.showCursor;
 	}
 
 	bool operator!=(const GameSettings& other) const
@@ -61,6 +64,7 @@ struct GameSettings
 			(this->gameplaySettings.showTimerWhilePlaying != other.gameplaySettings.showTimerWhilePlaying) ||
 			(this->gameplaySettings.showFPS != other.gameplaySettings.showFPS) ||
 			(this->gameplaySettings.showHitboxes != other.gameplaySettings.showHitboxes) ||
+			(this->gameplaySettings.showCursor != other.gameplaySettings.showCursor) ||
 
 			(this->audioSettings.masterVolume != other.audioSettings.masterVolume) ||
 			(this->audioSettings.sfxVolume != other.audioSettings.sfxVolume) ||
