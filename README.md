@@ -1,7 +1,8 @@
-# Your Game Name
+# Don't Fall
 
 ## Overview
-Briefly describe your game, its concept, and what makes it unique.
+Don't Fall is game where you control the player using the recoil of your shotgun.
+The objective is to avoid the obstacles that randomly spawn and collect ammo to ensure you keep yourself in the air and don't fall, thus losing the game.
 
 ## Table of Contents
 - [Features](#features)
