@@ -34,7 +34,9 @@ Step-by-step instructions on how to install and run the game.
 Explain the core mechanics and objectives of your game.
 
 ## Controls
-Outline the controls players can use to interact with the game.
+- **Left Mouse Button**: Shoot
+- **F5**: Toggle Fullscreen
+- **Esc**: Pause/Menu
 
 ## Development
 Provide information for developers who might want to contribute or understand how the game is built.
