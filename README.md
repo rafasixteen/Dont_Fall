@@ -33,7 +33,7 @@ The twist lies in collecting ammo to maintain airborne momentum and prevent the 
 ## Getting Started
 1. **Download the Project Files**: Obtain the game's source files from the repository.
 
-2. **Run the Game**: Execute the `Dont_Fall.exe` file to dive into the world of challenges and shotgun-powered navigation.
+2. **Run the Game**: Execute the `Dont_Fall.exe` file to play the game.
 
 ## Gameplay
 Explain the core mechanics and objectives of your game.
