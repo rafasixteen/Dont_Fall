@@ -83,8 +83,6 @@ Don't Fall is an open project, and I welcome any type of feedback! Here's how yo
 - **Feedback**: Whether it's a compliment, a suggestion, or whatever, go for it.
 
 ## Screenshoots
-Here are some screenshots from the game:
-
 ![Screenshot 1](path/to/screenshot1.png)
 *Caption for Screenshot 1*
 
