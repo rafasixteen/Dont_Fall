@@ -56,7 +56,7 @@ end
 workspace (workspaceName)
     configurations { "Debug", "Release"}
     platforms { "x64", "x86", "ARM64"}
-	
+
 	defaultplatform ("x64")
 
     filter "configurations:Debug"
@@ -66,6 +66,7 @@ workspace (workspaceName)
     filter "configurations:Release"
         defines { "NDEBUG" }
         optimize "On"
+        kind "WindowedApp" -- Do Not Open The Console 
 
     filter { "platforms:x64" }
         architecture "x86_64"
